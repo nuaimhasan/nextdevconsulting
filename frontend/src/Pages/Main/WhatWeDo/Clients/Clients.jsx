@@ -1,0 +1,32 @@
+import { useEffect } from "react";
+
+export default function Clients() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <section className="container py-12">
+      <div className="mt-6 md:w-[70%] text-center md:text-start">
+        <h2 className="text-3xl font-bold">Our Clients</h2>
+        <p className="mt-5 tracking-wider">
+          Our values are the foundation of our company. They define who we are
+          and how we work. They are the guiding principles that help us make
+          decisions, build relationships, and achieve our goals.
+          <br /> <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+          suscipit cum libero aperiam! Tempore, officia vitae! Magni distinctio
+          totam optio, ratione eveniet odio? Sint voluptates atque doloribus
+          libero ut deleniti.
+          <br /> <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam culpa
+          nulla magni laboriosam aperiam veritatis autem omnis facilis dolore.
+          Voluptatem nisi quaerat, dolore necessitatibus magni enim voluptas
+          expedita! Voluptatem, officia?
+        </p>
+      </div>
+      <div className="mt-8">
+       <img className="md:w-[70%] shadow rounded" src="/images/clients.png" alt="clients" />
+      </div>
+    </section>
+  )
+}
