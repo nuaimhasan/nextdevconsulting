@@ -36,8 +36,8 @@ import AddCareer from "../Pages/Admin/Career/AddCareer";
 import WhoWeAre from "../Pages/Admin/AllSection/WhoWeAre/WhoWeAre";
 import Values from "../Pages/Admin/AllSection/Values/Values";
 import History from "../Pages/Admin/AllSection/History/History";
-import People from "../Pages/Admin/AllSection/People/people";
 import CareerSection from "../Pages/Admin/AllSection/CareerSection/CareerSection";
+import People from "../Pages/Admin/AllSection/People/people";
 
 export const adminRoutes = {
   path: "/admin",
