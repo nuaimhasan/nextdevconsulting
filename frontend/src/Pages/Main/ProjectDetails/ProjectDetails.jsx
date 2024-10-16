@@ -50,7 +50,7 @@ export default function ProjectDetails() {
     return <div>Project not found</div>;
   }
 
-  const { title, description,category, image } = project;
+  const { title, description, category, image } = project;
 
   return (
     <section className="py-10">
@@ -67,12 +67,13 @@ export default function ProjectDetails() {
 
             <div className="mt-2">
               <h2 className="text-xl">{category?.name}</h2>
-              <h2 className="text-2xl font-bold text-secondary md:text-4xl">{title}</h2>
-              <p className="mt-3 text-xs text-neutral-content md:text-sm">
+              <h2 className="text-2xl font-bold text-secondary md:text-4xl">
+                {title}
+              </h2>
+              <div className="mt-3 text-xs text-neutral-content md:text-sm">
                 {parse(description)}
-              </p>
+              </div>
             </div>
-            
           </div>
           <div>
             <h2 className="-mt-2 text-2xl font-medium">Recent Projects</h2>
@@ -93,9 +94,9 @@ export default function ProjectDetails() {
                       {recentProject?.title}
                     </h3>
 
-                    <p className="mt-1 text-[10px] text-neutral-content md:text-xs">
+                    <div className="mt-1 text-[10px] text-neutral-content md:text-xs">
                       {truncateDescription(recentProject?.description, 68)}
-                    </p>
+                    </div>
                   </div>
                 </div>
               </Link>

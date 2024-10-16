@@ -34,6 +34,10 @@ import AddCategory from "../Pages/Admin/Category/AddCategory";
 import CareerList from "../Pages/Admin/Career/CareerList";
 import AddCareer from "../Pages/Admin/Career/AddCareer";
 import WhoWeAre from "../Pages/Admin/AllSection/WhoWeAre/WhoWeAre";
+import Values from "../Pages/Admin/AllSection/Values/Values";
+import History from "../Pages/Admin/AllSection/History/History";
+import People from "../Pages/Admin/AllSection/People/people";
+import CareerSection from "../Pages/Admin/AllSection/CareerSection/CareerSection";
 
 export const adminRoutes = {
   path: "/admin",
@@ -61,7 +65,7 @@ export const adminRoutes = {
     },
     {
       path: "career/add",
-      element: <AddCareer/>,
+      element: <AddCareer />,
     },
     {
       path: "category/add",
@@ -177,7 +181,23 @@ export const adminRoutes = {
     },
     {
       path: "/admin/who-we-are",
-      element: <WhoWeAre/>,
+      element: <WhoWeAre />,
+    },
+    {
+      path: "/admin/values",
+      element: <Values />,
+    },
+    {
+      path: "/admin/history",
+      element: <History />,
+    },
+    {
+      path: "/admin/people",
+      element: <People />,
+    },
+    {
+      path: "/admin/careerSection",
+      element: <CareerSection />,
     },
   ],
 };

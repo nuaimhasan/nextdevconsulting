@@ -12,8 +12,6 @@ export default function Footer() {
   const { data: logoData } = useGetLogosQuery();
   const logo = logoData?.data;
 
-  console.log("contact", contact);
-
   return (
     <footer className="bg-white">
       <div className="container w-full p-4 py-6 lg:py-8">

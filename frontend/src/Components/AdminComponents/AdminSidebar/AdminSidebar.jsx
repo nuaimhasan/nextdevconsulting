@@ -81,6 +81,12 @@ const adminSidebarItems = [
   },
   {
     icon: <MdOutlineWorkOutline />,
+    title: "Career Section",
+    path: "/admin/careerSection",
+  },
+  
+  {
+    icon: <MdOutlineWorkOutline />,
     title: "Career",
     path: "/admin/career",
   },
@@ -173,7 +179,11 @@ export default function AdminSidebar() {
       <div>
         <nav className="admin_siderbar">
           <Link to="/admin/dashboard" className="block py-3">
-            <img className="mx-auto w-3/5"  src={`${import.meta.env.VITE_BACKEND_URL}/${logo?.logo}`} alt="Logo" />
+            <img
+              className="mx-auto w-3/5"
+              src={`${import.meta.env.VITE_BACKEND_URL}/${logo?.logo}`}
+              alt="Logo"
+            />
           </Link>
 
           <ul>

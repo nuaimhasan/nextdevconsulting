@@ -1,29 +1,29 @@
 import { useEffect } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useGetWhoWeAreQuery } from "../../../Redux/whoWeAre/whoWeAre";
+import parse from "html-react-parser";
 
 export default function WhoWeAre() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   
+  const {data} = useGetWhoWeAreQuery();
+
+  const whoWeAre = data?.data;
+
+  const description = whoWeAre?.description && parse(whoWeAre?.description);
+
   return (
     <section className="py-12">
       <div className="container">
         <div>
           <div className="md:w-[65%] text-center md:text-start">
             <h2 className="text-3xl font-bold">Who we are</h2>
-            <p className="mt-2 text-lg tracking-wider">
-              We are a global consultancy united by a strong set of values and a
-              common purpose: to help build a more equitable and sustainable
-              world for all. <br /> <br /> We provide expert monitoring,
-              evaluation, learning and strategy services that help organisations
-              improve their performance and catalyse positive lasting social,
-              economic and environmental change.
-              <br /> <br /> In all our work, we are committed to equity,
-              diversity, and technical excellence to meet the highest
-              professional and ethical standards. Values
-            </p>
+            <div className="mt-2 text-lg tracking-wider">
+              {description}
+            </div>
           </div>
           <div className="grid md:grid-cols-2 mt-7 gap-8">
             <Link className="py-5 border-t border-black" to="/who-we-are/values">

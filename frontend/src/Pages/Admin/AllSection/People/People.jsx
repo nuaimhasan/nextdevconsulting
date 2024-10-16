@@ -1,23 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import JoditEditor from "jodit-react";
 import Swal from "sweetalert2";
-import {
-  useAddWhoWeAreMutation,
-  useGetWhoWeAreQuery,
-  useUpdateWhoWeAreMutation,
-} from "../../../../Redux/whoWeAre/whoWeAre";
+import { useAddPeopleMutation, useGetPeopleQuery, useUpdatePeopleMutation } from "../../../../Redux/whoWeAre/people/peopleApi";
 
-export default function WhoWeAre() {
-  const editor = useRef(null);
+export default function People() {
+    const editor = useRef(null);
   const [content, setContent] = useState("");
   const [id, setId] = useState(null);
 
-  const { data: privacy, isLoading } = useGetWhoWeAreQuery();
+  const { data: privacy, isLoading } = useGetPeopleQuery();
 
-  const [addPrivacy, { isLoading: addIsLoading }] = useAddWhoWeAreMutation();
+  const [addPrivacy, { isLoading: addIsLoading }] = useAddPeopleMutation();
 
   const [updatePrivacy, { isLoading: updateIsLoading }] =
-    useUpdateWhoWeAreMutation();
+  useUpdatePeopleMutation();
 
   useEffect(() => {
     if (privacy) {
@@ -36,7 +32,7 @@ export default function WhoWeAre() {
         if (res?.data?.success) {
           Swal.fire(
             "Success",
-            "Who We Are updated successfully",
+            "People updated successfully",
             "success",
           );
         } else {
@@ -47,7 +43,7 @@ export default function WhoWeAre() {
         if (res?.data?.success) {
           Swal.fire(
             "Success",
-            "Who We Are created successfully",
+            "People created successfully",
             "success",
           );
         } else {
@@ -60,10 +56,11 @@ export default function WhoWeAre() {
     }
   };
 
+
   return (
-    <div className="make_privacy_policy">
+     <div className="make_privacy_policy">
       <h2 className="mb-3 text-center text-xl font-medium text-primary sm:text-2xl">
-        {id ? "Edit Who We Are" : "Create Who We Are"}
+        {id ? "Edit People Section" : "Create People Section"}
       </h2>
 
       {isLoading ? (
@@ -86,5 +83,5 @@ export default function WhoWeAre() {
         </form>
       )}
     </div>
-  );
+  )
 }

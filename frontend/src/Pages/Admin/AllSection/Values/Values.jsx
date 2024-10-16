@@ -1,23 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import JoditEditor from "jodit-react";
 import Swal from "sweetalert2";
-import {
-  useAddWhoWeAreMutation,
-  useGetWhoWeAreQuery,
-  useUpdateWhoWeAreMutation,
-} from "../../../../Redux/whoWeAre/whoWeAre";
+import { useAddValuesMutation, useGetValuesQuery, useUpdateValuesMutation } from "../../../../Redux/whoWeAre/values/valuesApi";
 
-export default function WhoWeAre() {
+export default function Values() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [id, setId] = useState(null);
 
-  const { data: privacy, isLoading } = useGetWhoWeAreQuery();
+  const { data: privacy, isLoading } = useGetValuesQuery();
 
-  const [addPrivacy, { isLoading: addIsLoading }] = useAddWhoWeAreMutation();
+  const [addPrivacy, { isLoading: addIsLoading }] = useAddValuesMutation();
 
   const [updatePrivacy, { isLoading: updateIsLoading }] =
-    useUpdateWhoWeAreMutation();
+  useUpdateValuesMutation();
 
   useEffect(() => {
     if (privacy) {
@@ -36,7 +32,7 @@ export default function WhoWeAre() {
         if (res?.data?.success) {
           Swal.fire(
             "Success",
-            "Who We Are updated successfully",
+            "Values updated successfully",
             "success",
           );
         } else {
@@ -47,7 +43,7 @@ export default function WhoWeAre() {
         if (res?.data?.success) {
           Swal.fire(
             "Success",
-            "Who We Are created successfully",
+            "Values created successfully",
             "success",
           );
         } else {
@@ -63,7 +59,7 @@ export default function WhoWeAre() {
   return (
     <div className="make_privacy_policy">
       <h2 className="mb-3 text-center text-xl font-medium text-primary sm:text-2xl">
-        {id ? "Edit Who We Are" : "Create Who We Are"}
+        {id ? "Edit Values" : "Create Values"}
       </h2>
 
       {isLoading ? (

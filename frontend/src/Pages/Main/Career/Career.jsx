@@ -1,28 +1,22 @@
 import { Link } from "react-router-dom";
 import { useGetCareersQuery } from "../../../Redux/career/careerApi";
+import parse from "html-react-parser";
+import { useGetCareerSectionQuery } from "../../../Redux/career/careerSectionApi";
 
 export default function Career() {
   const { data } = useGetCareersQuery();
   const careers = data?.data;
+
+  const {data : careerSection} = useGetCareerSectionQuery();
+
+  const description = careerSection?.data?.description && parse(careerSection?.data?.description);
 
   return (
     <section className="container py-12">
       <div className="mt-6 text-center md:w-[70%] md:text-start">
         <h2 className="text-3xl font-bold">Current vacancies</h2>
         <p className="tracking-wider">
-          Our values are the foundation of our company. They define who we are
-          and how we work. They are the guiding principles that help us make
-          decisions, build relationships, and achieve our goals.
-          <br /> <br />
-          If you are interested in working with us as a proofreader, copyeditor
-          or translator, please contact us at{" "}
-          <span className="underline">support@nextdev.com</span> and include a
-          copy of your CV.
-          <br /> <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam culpa
-          nulla magni laboriosam aperiam veritatis autem omnis facilis dolore.
-          Voluptatem nisi quaerat, dolore necessitatibus magni enim voluptas
-          expedita! Voluptatem, officia?
+          {description}
         </p>
       </div>
       <div className="mt-8 grid gap-6 sm:grid-cols-3 md:grid-cols-4">

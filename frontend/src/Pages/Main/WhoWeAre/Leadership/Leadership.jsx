@@ -1,4 +1,12 @@
+import { useGetDirectorQuery } from "../../../../Redux/director/directorApi";
+
 export default function Leadership() {
+  const { data, error, isLoading } = useGetDirectorQuery();
+
+  const director = data?.data;
+
+  console.log(director);
+
   return (
     <section className="container py-12">
       <h3 className="hidden border-b pb-3 md:block">Who We Are</h3>
@@ -31,45 +39,24 @@ export default function Leadership() {
         </p>
 
         <div className="mt-8 grid gap-7 border-t pt-12 sm:grid-cols-3 md:grid-cols-4">
-          <div className="round overflow-hidden border text-center shadow">
-            <img
-              className="w-full duration-300 hover:scale-105"
-              src="/images/leader.jpg"
-              alt=""
-            />
-            <div className="p-5">
-              <h3 className="text-2xl font-semibold leading-4">
-                Chris Bartner
-              </h3>
-              <h5 className="mt-2.5">Partner</h5>
+          {director?.map((leader) => (
+            <div
+              key={leader?._id}
+              className="overflow-hidden rounded-t-md border text-center shadow"
+            >
+              <img
+                className="h-52 w-full rounded-t-md duration-300 hover:scale-105"
+                src={`${import.meta.env.VITE_BACKEND_URL}/${leader?.image}`}
+                alt="Leader Image"
+              />
+              <div className="p-5">
+                <h3 className="text-2xl font-semibold leading-7">
+                  {leader?.name}
+                </h3>
+                <h5 className="mt-2.5">{leader?.designation}</h5>
+              </div>
             </div>
-          </div>
-          <div className="round overflow-hidden border text-center shadow">
-            <img
-              className="w-full duration-300 hover:scale-105"
-              src="/images/leader.jpg"
-              alt=""
-            />
-            <div className="p-5">
-              <h3 className="text-2xl font-semibold leading-4">
-                Chris Bartner
-              </h3>
-              <h5 className="mt-2.5">Partner</h5>
-            </div>
-          </div>
-          <div className="round overflow-hidden border text-center shadow">
-            <img
-              className="w-full duration-300 hover:scale-105"
-              src="/images/leader.jpg"
-              alt=""
-            />
-            <div className="p-5">
-              <h3 className="text-2xl font-semibold leading-4">
-                Chris Bartner
-              </h3>
-              <h5 className="mt-2.5">Partner</h5>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

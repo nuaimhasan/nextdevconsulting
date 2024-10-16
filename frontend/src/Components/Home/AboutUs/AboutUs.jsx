@@ -1,22 +1,32 @@
 import CountUp from "react-countup";
+import { useGetAboutUsQuery } from "../../../Redux/about/aboutApi";
+import Spinner from "../../Spinner/Spinner";
+import parse from "html-react-parser";
 
 export default function AboutUs() {
+  const { data, isLoading } = useGetAboutUsQuery();
+
+  const aboutUs = data?.data;
+
+  console.log(aboutUs);
+  const description = aboutUs?.description && parse(aboutUs?.description);
+
+  if (isLoading) return <Spinner />;
+
   return (
     <div className="bg-secondary py-12 text-white">
       <div className="container grid px-6 md:grid-cols-2">
         <div>
           <div className="mb-8">
-            <h2 className="text-2xl font-bold md:mb-4 md:text-4xl">About us</h2>
-            <p className="text-xs md:text-lg">
-              We are a global consultancy united by a strong set of values and a
-              common purpose: to help build a more equitable and sustainable
-              world for all.
-            </p>
+            <h2 className="text-2xl font-bold md:mb-4 md:text-4xl">
+              {aboutUs?.title}
+            </h2>
+            <div className="text-xs md:text-lg">{description}</div>
           </div>
           <div className="flex space-x-12">
             <div className="text-center md:min-w-36">
               <CountUp
-                end={822}
+                end={aboutUs?.projectCount}
                 duration={5}
                 className="text-3xl font-bold md:text-4xl"
               />
@@ -24,7 +34,7 @@ export default function AboutUs() {
             </div>
             <div className="text-center md:min-w-36">
               <CountUp
-                end={195}
+                end={aboutUs?.clientCount}
                 duration={5}
                 className="text-3xl font-bold md:text-4xl"
               />
@@ -32,7 +42,7 @@ export default function AboutUs() {
             </div>
             <div className="text-center md:min-w-36">
               <CountUp
-                end={110}
+                end={aboutUs?.countriesCount}
                 duration={5}
                 className="text-3xl font-bold md:text-4xl"
               />
@@ -40,8 +50,12 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center animate-slideInRight">
-          <img src="/images/aboutus.png" className="w-[90%]" alt="aboutus" />
+        <div className="flex animate-slideInRight items-center justify-center">
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}/${aboutUs?.image}`}
+            className="w-[90%]"
+            alt="aboutus"
+          />
         </div>
       </div>
     </div>

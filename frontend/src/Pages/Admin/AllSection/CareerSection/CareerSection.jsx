@@ -2,22 +2,23 @@ import { useEffect, useRef, useState } from "react";
 import JoditEditor from "jodit-react";
 import Swal from "sweetalert2";
 import {
-  useAddWhoWeAreMutation,
-  useGetWhoWeAreQuery,
-  useUpdateWhoWeAreMutation,
-} from "../../../../Redux/whoWeAre/whoWeAre";
+  useAddCareerSectionMutation,
+  useGetCareerSectionQuery,
+  useUpdateCareerSectionMutation,
+} from "../../../../Redux/career/careerSectionApi";
 
-export default function WhoWeAre() {
+export default function CareerSection() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [id, setId] = useState(null);
 
-  const { data: privacy, isLoading } = useGetWhoWeAreQuery();
+  const { data: privacy, isLoading } = useGetCareerSectionQuery();
 
-  const [addPrivacy, { isLoading: addIsLoading }] = useAddWhoWeAreMutation();
+  const [addPrivacy, { isLoading: addIsLoading }] =
+    useAddCareerSectionMutation();
 
   const [updatePrivacy, { isLoading: updateIsLoading }] =
-    useUpdateWhoWeAreMutation();
+    useUpdateCareerSectionMutation();
 
   useEffect(() => {
     if (privacy) {
@@ -34,22 +35,14 @@ export default function WhoWeAre() {
       if (id) {
         const res = await updatePrivacy({ id, data: info });
         if (res?.data?.success) {
-          Swal.fire(
-            "Success",
-            "Who We Are updated successfully",
-            "success",
-          );
+          Swal.fire("Success", "Career Section updated successfully", "success");
         } else {
           Swal.fire("Error", "Something went wrong", "error");
         }
       } else {
         const res = await addPrivacy(info);
         if (res?.data?.success) {
-          Swal.fire(
-            "Success",
-            "Who We Are created successfully",
-            "success",
-          );
+          Swal.fire("Success", "Career Section created successfully", "success");
         } else {
           Swal.fire("Error", "Something went wrong", "error");
         }
@@ -63,7 +56,7 @@ export default function WhoWeAre() {
   return (
     <div className="make_privacy_policy">
       <h2 className="mb-3 text-center text-xl font-medium text-primary sm:text-2xl">
-        {id ? "Edit Who We Are" : "Create Who We Are"}
+        {id ? "Edit Career Section" : "Create Career Section"}
       </h2>
 
       {isLoading ? (
