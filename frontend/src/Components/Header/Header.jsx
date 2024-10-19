@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiLinkedin } from "react-icons/ci";
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
+import { useSearchProjectsQuery } from "../../Redux/projects/projectsApi";
+import { FaSearch } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 
 export default function Header() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -13,9 +16,33 @@ export default function Header() {
     whatWeDo: false,
     workWithUs: false,
   });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+  const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState(false);
 
   const { data: logoData } = useGetLogosQuery();
   const logo = logoData?.data;
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchTerm]);
+
+  const { data: searchData } = useSearchProjectsQuery(debouncedSearchTerm, {
+    skip: debouncedSearchTerm === "",
+  });
+
+  useEffect(() => {
+    if (searchData) {
+      setSearchResults(searchData?.data || []);
+    }
+  }, [searchData]);
 
   useEffect(() => {
     if (showSidebar) {
@@ -69,7 +96,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/who-we-are/values"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         values
                       </Link>
@@ -77,7 +104,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/who-we-are/history"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         History
                       </Link>
@@ -85,7 +112,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/who-we-are/people"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         People
                       </Link>
@@ -93,7 +120,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/who-we-are/leadership"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Leadership
                       </Link>
@@ -101,7 +128,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/who-we-are/offices"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Offices
                       </Link>
@@ -109,7 +136,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/who-we-are/policies"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Policies
                       </Link>
@@ -135,7 +162,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/what-we-do/services"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Services
                       </Link>
@@ -143,7 +170,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/what-we-do/impact"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Impact
                       </Link>
@@ -151,7 +178,7 @@ export default function Header() {
                     <li>
                       <Link
                         to="/what-we-do/clients"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Clients
                       </Link>
@@ -160,7 +187,7 @@ export default function Header() {
                       <Link
                         to="/news-insights"
                         // to="/what-we-do/projects"
-                        className="block px-4 py-2 line duration-200 hover:text-secondary"
+                        className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Projects
                       </Link>
@@ -220,6 +247,55 @@ export default function Header() {
 
           <nav>
             <ul className="flex items-center gap-6">
+              <div className={`${search ? "" : "hidden"}`}>
+                <div className="relative flex items-center gap-2">
+                  <input
+                    type="text"
+                    className="w-36 rounded-3xl border px-3 py-2 shadow md:w-60"
+                    placeholder="Type here..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+
+                  {debouncedSearchTerm && searchResults.length > 0 && (
+                    <div className="absolute left-0 top-12 z-10 w-full bg-white shadow-lg">
+                      <ul className="max-h-64 overflow-y-auto">
+                        {searchResults.map((project) => (
+                          <li
+                            key={project._id}
+                            className="flex gap-2 border-b px-4 py-2"
+                          >
+                            <img
+                              src={`${import.meta.env.VITE_BACKEND_URL}/${project?.image}`}
+                              className="h-8 w-10"
+                              alt="Image"
+                            />
+                            <Link
+                              to={`/project/${project._id}`}
+                              onClick={() => setSearchTerm("")}
+                            >
+                              {project.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="">
+                {search ? (
+                  <MdCancel
+                    onClick={() => setSearch(false)}
+                    className="flex cursor-pointer items-center text-xl"
+                  />
+                ) : (
+                  <FaSearch
+                    onClick={() => setSearch(true)}
+                    className="flex cursor-pointer items-center text-xl"
+                  />
+                )}
+              </div>
               <div className="flex items-center gap-2">
                 <li className="hidden sm:block">
                   <Link to="/" className="text-xl hover:text-primary">

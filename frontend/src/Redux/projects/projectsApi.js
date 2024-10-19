@@ -50,6 +50,14 @@ export const projectApi = apiSlice.injectEndpoints({
       providesTags: ["projects"],
     }),
 
+    searchProjects: builder.query({
+      query: (searchTerm) => ({
+        url: `/project/title/?search=${searchTerm}`,
+        method: "GET",
+      }),
+      providesTags: ["Project"],
+    }),
+
     addProject: builder.mutation({
       query: (formData) => ({
         url: "/project/add",
@@ -81,6 +89,7 @@ export const projectApi = apiSlice.injectEndpoints({
 export const {
   useGetProjectsQuery,
   useGetRecentProjectsQuery,
+  useSearchProjectsQuery,
   useGetLatestNewsProjectsQuery,
   useGetLatestStoryProjectsQuery,
   useGetProjectByIdQuery,

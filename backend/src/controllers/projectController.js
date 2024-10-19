@@ -111,6 +111,20 @@ exports.getProjectById = async (req, res) => {
   }
 };
 
+exports.getProjectByTitle = async (req, res) => {
+  const searchTerm = req.query.search || "";
+
+  try {
+    const projects = await Project.find({
+      title: { $regex: searchTerm, $options: "i" },
+    });
+
+    res.json({ data: projects });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.getRecentProjects = async (req, res) => {
   try {
     const project = await Project.find({}).sort({ createdAt: -1 }).limit(5);
@@ -160,9 +174,9 @@ exports.getLatestNewsProjects = async (req, res) => {
   try {
     const newsProjects = await Project.find({})
       .populate({
-        path: 'category',
+        path: "category",
         match: { name: "News" },
-        select: 'name'
+        select: "name",
       })
       .sort({ createdAt: -1 })
       .limit(3);
@@ -185,13 +199,15 @@ exports.getLatestStoryProjects = async (req, res) => {
   try {
     const storyProjects = await Project.find({})
       .populate({
-        path: 'category',
+        path: "category",
         match: { name: "Story" },
-        select: 'name'
+        select: "name",
       })
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1 });
 
-    const filteredProjects = storyProjects.filter((project) => project.category);
+    const filteredProjects = storyProjects.filter(
+      (project) => project.category
+    );
 
     res.status(200).json({
       success: true,

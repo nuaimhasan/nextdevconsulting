@@ -8,6 +8,7 @@ const {
   getLatestNewsProjects,
   getLatestStoryProjects,
   getProjectById,
+  getProjectByTitle,
   getRecentProjects,
   getProjectBySlug,
   updateProjectById,
@@ -32,6 +33,7 @@ const upload = multer({
 router.post("/add", upload.single("image"), addProject);
 router.get("/", getProjects);
 router.get("/recent", getRecentProjects);
+router.get("/title", getProjectByTitle);
 router.get("/latest-news", getLatestNewsProjects);
 router.get("/latest-story", getLatestStoryProjects);
 router.get("/:id", getProjectById);
