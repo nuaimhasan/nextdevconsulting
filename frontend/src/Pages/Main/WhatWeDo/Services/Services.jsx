@@ -1,26 +1,31 @@
-import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+// import { FaArrowRightLong } from "react-icons/fa6";
+// import { Link } from "react-router-dom";
+import parse from "html-react-parser";
+import { useGetHistoryQuery } from "../../../../Redux/whoWeAre/history/historyApi";
+import { useEffect } from "react";
 
 export default function Services() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const { data } = useGetHistoryQuery();
+
+  const services = data?.data;
+
+  const description = services?.description && parse(services?.description);
+
   return (
     <section className="py-12">
       <div className="container">
         <div>
-          <div className="md:w-[65%] text-center md:text-start">
-            <h2 className="text-3xl font-bold">Our services</h2>
-            <p className="mt-2 text-lg tracking-wider">
-              We are a global consultancy united by a strong set of values and a
-              common purpose: to help build a more equitable and sustainable
-              world for all. <br /> <br /> We provide expert monitoring,
-              evaluation, learning and strategy services that help organisations
-              improve their performance and catalyse positive lasting social,
-              economic and environmental change.
-              <br /> <br /> In all our work, we are committed to equity,
-              diversity, and technical excellence to meet the highest
-              professional and ethical standards. Values
-            </p>
+          <div className="text-center md:w-[65%] md:text-start">
+            <h2 className="text-3xl font-bold">
+              Our services - NextDev Consulting
+            </h2>
+            <div className="mt-2 text-lg tracking-wider">{description}</div>
           </div>
-          <div className="mt-7 grid md:grid-cols-2 gap-8">
+          {/* <div className="mt-7 grid gap-8 md:grid-cols-2">
             <Link
               className="border-t border-black py-5"
               to="/what-we-do/strategy"
@@ -57,7 +62,7 @@ export default function Services() {
                 alt=""
               />
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

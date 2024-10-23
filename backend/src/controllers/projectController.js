@@ -172,16 +172,17 @@ exports.getProjectBySlug = async (req, res) => {
 
 exports.getLatestNewsProjects = async (req, res) => {
   try {
-    const newsProjects = await Project.find({})
+    const storyProjects = await Project.find({})
       .populate({
         path: "category",
-        match: { name: "News" },
+        match: { name: "Story" }, // Match the category with name "Story"
         select: "name",
       })
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1 }) // Sort by the latest created
       .limit(3);
 
-    const filteredProjects = newsProjects.filter((project) => project.category);
+    // Filter out projects where the category is not matched
+    const filteredProjects = storyProjects.filter((project) => project.category);
 
     res.status(200).json({
       success: true,

@@ -112,7 +112,7 @@ export default function EditProject() {
                       <p className="text-neutral-content">or Drop here</p>
                     </div>
                     {image?.length > 0 && (
-                      <div className="mt-4 relative">
+                      <div className="relative mt-4">
                         <img
                           src={image[0]?.data_url}
                           alt="Main"

@@ -35,6 +35,9 @@ const project = require("./projectRoute");
 const careerSection = require("./careerSectionRoute");
 const career = require("./careerRoute");
 const subscriber = require("./subscribersRoute");
+const newsInsight = require("./newsInsightRoute");
+const ourPupose = require("./ourPurposeRoute")
+const service = require("./serviceRoute");
 
 //------------------------------------------------------------------------
 // use Routes
@@ -70,6 +73,9 @@ router.use("/project", project);
 router.use("/careerSection", careerSection);
 router.use("/career", career);
 router.use("/subscriber", subscriber);
+router.use("/newsInsight", newsInsight);
+router.use("/ourPurpose", ourPupose);
+router.use("/service", service);
 
 
 module.exports = router;

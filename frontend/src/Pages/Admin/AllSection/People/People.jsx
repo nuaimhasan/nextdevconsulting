@@ -32,7 +32,7 @@ export default function People() {
         if (res?.data?.success) {
           Swal.fire(
             "Success",
-            "People updated successfully",
+            "Impact updated successfully",
             "success",
           );
         } else {
@@ -43,7 +43,7 @@ export default function People() {
         if (res?.data?.success) {
           Swal.fire(
             "Success",
-            "People created successfully",
+            "Impact created successfully",
             "success",
           );
         } else {
@@ -60,7 +60,7 @@ export default function People() {
   return (
      <div className="make_privacy_policy">
       <h2 className="mb-3 text-center text-xl font-medium text-primary sm:text-2xl">
-        {id ? "Edit People Section" : "Create People Section"}
+        {id ? "Edit Impact Section" : "Create Impact Section"}
       </h2>
 
       {isLoading ? (

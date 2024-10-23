@@ -6,13 +6,13 @@
 
 :root {
   --primary: #136051;
-  --secondary: #39ff14;
+  --secondary: #ffa500;
 }
 
 body {
   margin: 0;
   font-family: "Poppins", system-ui;
-  background-color: #FEF8F2;
+  background-color: #fef8f2;
 }
 
 h2 {
@@ -49,12 +49,42 @@ h2 {
 }
 
 .orange_btn {
-  @apply bg-orange border-orange hover:text-orange rounded border px-2 py-1.5 text-sm font-medium text-white shadow duration-300 hover:bg-transparent md:px-3 md:py-2 md:text-base md:font-semibold;
+  @apply rounded border border-orange bg-orange px-2 py-1.5 text-xs font-medium text-white shadow duration-300 hover:bg-transparent hover:text-orange md:px-3 md:py-1.5 md:text-base md:font-semibold;
+}
+
+.orange_btn2 {
+  @apply rounded border border-orange bg-transparent px-2 py-1.5 text-xs font-medium text-orange shadow duration-300 hover:bg-orange hover:text-white md:px-3 md:py-1.5 md:text-base md:font-semibold;
 }
 
 .admin_btn {
   @apply rounded border bg-primary px-4 py-2 text-white;
 }
+
+/* ------------------------- */
+
+.feature_card {
+  @apply text-xs md:text-base;
+  background: var(--primary);
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  transition: all 0.5s ease;
+}
+
+.feature_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  background: var(--secondary);
+}
+
+/* --------------------------------- */
 
 .primary_btn::before {
   content: "";
@@ -109,7 +139,6 @@ h2 {
 .primary_outline_btn:hover {
   color: #fff;
 }
-
 
 nav ul li a {
   position: relative;

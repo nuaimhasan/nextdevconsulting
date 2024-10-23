@@ -8,8 +8,8 @@ export default function WhoWeAre() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
-  const {data} = useGetWhoWeAreQuery();
+
+  const { data } = useGetWhoWeAreQuery();
 
   const whoWeAre = data?.data;
 
@@ -19,14 +19,15 @@ export default function WhoWeAre() {
     <section className="py-12">
       <div className="container">
         <div>
-          <div className="md:w-[65%] text-center md:text-start">
+          <div className="text-center md:w-[65%] md:text-start">
             <h2 className="text-3xl font-bold">Who we are</h2>
-            <div className="mt-2 text-lg tracking-wider">
-              {description}
-            </div>
+            <div className="mt-2 text-lg tracking-wider">{description}</div>
           </div>
-          <div className="grid md:grid-cols-2 mt-7 gap-8">
-            <Link className="py-5 border-t border-black" to="/who-we-are/values">
+          <div className="mt-7 grid gap-8 md:grid-cols-2">
+            <Link
+              className="border-t border-black py-5"
+              to="/who-we-are/values"
+            >
               <h2 className="flex items-center gap-1 text-2xl font-medium duration-300 hover:underline">
                 Values{" "}
                 <FaArrowRightLong className="text-base text-neutral-content" />
@@ -35,40 +36,31 @@ export default function WhoWeAre() {
                 Our values influence all of our work and the way we run our
                 organisation. Explore our values.
               </p>
-              <img className="w-full h-[330px] mt-4"  src="/images/values.jpg" alt="" />
+              <img
+                className="mt-4 h-[330px] w-full"
+                src="/images/values.jpg"
+                alt=""
+              />
             </Link>
-            <Link className="py-5 border-t border-black" to="/who-we-are/history">
+            
+            
+            <Link
+              className="border-t border-black py-5"
+              to="/who-we-are/offices"
+            >
               <h2 className="flex items-center gap-1 text-2xl font-medium duration-300 hover:underline">
-                History{" "}
+                Offices{" "}
                 <FaArrowRightLong className="text-base text-neutral-content" />
               </h2>
               <p className="mt-4">
                 Our values influence all of our work and the way we run our
                 organisation. Explore our values.
               </p>
-              <img className="w-full mt-4 h-[330px]" src="/images/history.jpg" alt="" />
-            </Link>
-            <Link className="py-5 border-t border-black" to="/who-we-are/people">
-              <h2 className="flex items-center gap-1 text-2xl font-medium duration-300 hover:underline">
-                People{" "}
-                <FaArrowRightLong className="text-base text-neutral-content" />
-              </h2>
-              <p className="mt-4">
-                Our values influence all of our work and the way we run our
-                organisation. Explore our values.
-              </p>
-              <img className="w-full mt-4 h-[330px]" src="/images/people.jpg" alt="" />
-            </Link>
-            <Link className="py-5 border-t border-black" to="/who-we-are/offices">
-              <h2 className="flex items-center gap-1 text-2xl font-medium duration-300 hover:underline">
-              Offices{" "}
-                <FaArrowRightLong className="text-base text-neutral-content" />
-              </h2>
-              <p className="mt-4">
-                Our values influence all of our work and the way we run our
-                organisation. Explore our values.
-              </p>
-              <img className="w-full mt-4 h-[330px]" src="/images/office.webp" alt="" />
+              <img
+                className="mt-4 h-[330px] w-full"
+                src="/images/office.webp"
+                alt=""
+              />
             </Link>
           </div>
         </div>

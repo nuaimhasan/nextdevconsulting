@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import ProjectCard from "../../../../Components/ProjectCard/ProjectCard";
 import { useGetLatestStoryProjectsQuery } from "../../../../Redux/projects/projectsApi";
+import { useGetPeopleQuery } from "../../../../Redux/whoWeAre/people/peopleApi";
+import parse from "html-react-parser";
 
 export default function Impact() {
   useEffect(() => {
@@ -8,6 +10,12 @@ export default function Impact() {
   }, []);
 
   const { data, isSuccess } = useGetLatestStoryProjectsQuery();
+
+  const {data: sectionData} = useGetPeopleQuery();
+
+  const section = sectionData?.data;
+
+  const description = section?.description && parse(section?.description);
 
   if (!isSuccess) {
     return <p>Loading...</p>;
@@ -20,19 +28,7 @@ export default function Impact() {
       <div className="mt-6 text-center md:w-[70%] md:text-start">
         <h2 className="text-3xl font-bold">Stories of impact</h2>
         <p className="mt-5 tracking-wider">
-          Our values are the foundation of our company. They define who we are
-          and how we work. They are the guiding principles that help us make
-          decisions, build relationships, and achieve our goals.
-          <br /> <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          suscipit cum libero aperiam! Tempore, officia vitae! Magni distinctio
-          totam optio, ratione eveniet odio? Sint voluptates atque doloribus
-          libero ut deleniti.
-          <br /> <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam culpa
-          nulla magni laboriosam aperiam veritatis autem omnis facilis dolore.
-          Voluptatem nisi quaerat, dolore necessitatibus magni enim voluptas
-          expedita! Voluptatem, officia?
+          {description}
         </p>
       </div>
       <div className="mt-8">

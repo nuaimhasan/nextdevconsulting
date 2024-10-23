@@ -8,6 +8,7 @@ import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import { useSearchProjectsQuery } from "../../Redux/projects/projectsApi";
 import { FaSearch } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
+import { useGetContactsQuery } from "../../Redux/contact/contactApi";
 
 export default function Header() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -23,6 +24,10 @@ export default function Header() {
 
   const { data: logoData } = useGetLogosQuery();
   const logo = logoData?.data;
+
+  const { data } = useGetContactsQuery();
+
+  const contactUs = data?.data;
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -89,9 +94,9 @@ export default function Header() {
                   to="/who-we-are"
                   className="duration-200 hover:text-secondary"
                 >
-                  Who we are
+                  Who we are 
                 </Link>
-                {dropdownOpen.whoWeAre && (
+                {dropdownOpen.whoWeAre &&  (
                   <ul className="absolute -left-5 w-48 rounded border bg-white shadow-lg">
                     <li>
                       <Link
@@ -101,22 +106,22 @@ export default function Header() {
                         values
                       </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link
                         to="/who-we-are/history"
                         className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         History
                       </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link
                         to="/who-we-are/people"
                         className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         People
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link
                         to="/who-we-are/leadership"

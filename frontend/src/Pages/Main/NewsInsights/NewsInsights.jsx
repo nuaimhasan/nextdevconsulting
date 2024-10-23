@@ -3,6 +3,8 @@ import ProjectCard from "../../../Components/ProjectCard/ProjectCard";
 import { useGetProjectsQuery } from "../../../Redux/projects/projectsApi";
 import { useGetCategoryQuery } from "../../../Redux/category/categoryApi";
 import Spinner from "../../../Components/Spinner/Spinner";
+import parse from "html-react-parser";
+import { useGetNewsInsightQuery } from "../../../Redux/newsInsight/newsInsightApi";
 
 export default function NewsInsights() {
   useEffect(() => {
@@ -15,13 +17,24 @@ export default function NewsInsights() {
   const { data: categoryData } = useGetCategoryQuery();
   const { data, refetch, isFetching } = useGetProjectsQuery(query);
 
+  const { data: newsInsightData } = useGetNewsInsightQuery();
+
+  const newsInsight = newsInsightData?.data;
+
+  const description =
+    newsInsight?.description && parse(newsInsight?.description);
+
   useEffect(() => {
     const newQuery = `?page=${page}&limit=8${
       selectedCategory ? `&category=${selectedCategory}` : ""
     }`;
     setQuery(newQuery);
     refetch();
-    window.scrollTo(0, 200);
+
+    const categorySection = document.getElementById("category");
+    if (categorySection) {
+      categorySection.scrollIntoView({ behavior: "smooth" });
+    }
   }, [selectedCategory, page, refetch]);
 
   const projects = data?.data;
@@ -32,16 +45,9 @@ export default function NewsInsights() {
     <section className="container py-12">
       <div className="mt-6 text-center md:w-[70%] md:text-start">
         <h2 className="text-2xl font-bold md:text-3xl">News & insights</h2>
-        <p className="mt-5 text-sm tracking-wide md:text-base md:tracking-wider">
-          Our values are the foundation of our company. They define who we are
-          and how we work. They are the guiding principles that help us make
-          decisions, build relationships, and achieve our goals.
-          <br /> <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          suscipit cum libero aperiam! Tempore, officia vitae! Magni distinctio
-          totam optio, ratione eveniet odio? Sint voluptates atque doloribus
-          libero ut deleniti.
-        </p>
+        <div className="mt-5 text-sm tracking-wide md:text-base md:tracking-wider">
+          {description}
+        </div>
       </div>
       <div className="mt-8">
         <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
@@ -52,7 +58,7 @@ export default function NewsInsights() {
               setPage(1);
             }}
             name="category"
-            id=""
+            id="category"
           >
             <option value="">All</option>
             {category?.map((cat) => (

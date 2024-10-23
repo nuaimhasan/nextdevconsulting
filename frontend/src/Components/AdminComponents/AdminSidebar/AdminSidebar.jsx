@@ -8,6 +8,8 @@ import {
   MdOutlinePrivacyTip,
   MdOutlineWorkOutline,
   MdStars,
+  MdOutlineStarBorderPurple500,
+  MdMiscellaneousServices,
 } from "react-icons/md";
 import { FcAbout } from "react-icons/fc";
 import { RiAdminFill } from "react-icons/ri";
@@ -19,6 +21,7 @@ import { CgProfile } from "react-icons/cg";
 
 import SidebarItems from "./SidebarItems";
 import { useGetLogosQuery } from "../../../Redux/logo/logoApi";
+import { TbNewSection } from "react-icons/tb";
 
 const adminSidebarItems = [
   {
@@ -32,10 +35,17 @@ const adminSidebarItems = [
     title: "Category",
     path: "/admin/category",
   },
+
   {
     icon: <HiOutlineBuildingLibrary />,
     title: "Projects",
     path: "/admin/project/all",
+  },
+
+  {
+    icon: <MdMiscellaneousServices />,
+    title: "Services",
+    path: "/admin/services/all",
   },
 
   {
@@ -50,7 +60,12 @@ const adminSidebarItems = [
   },
   {
     icon: <CgProfile />,
-    title: "Directors",
+    title: "Leadership Section",
+    path: "/admin/leadershipSection",
+  },
+  {
+    icon: <CgProfile />,
+    title: "Leaders",
     path: "/admin/director/all",
   },
 
@@ -80,11 +95,17 @@ const adminSidebarItems = [
     path: "/admin/subscribers",
   },
   {
-    icon: <MdOutlineWorkOutline />,
+    icon: <MdOutlineStarBorderPurple500 />,
+    title: "Our Purpose",
+    path: "/admin/ourPurpose",
+  },
+
+  {
+    icon: <TbNewSection />,
     title: "Career Section",
     path: "/admin/careerSection",
   },
-  
+
   {
     icon: <MdOutlineWorkOutline />,
     title: "Career",
@@ -111,16 +132,24 @@ const adminSidebarItems = [
         path: "/admin/who-we-are",
       },
       {
+        title: "What We Do",
+        path: "/admin/what-we-do",
+      },
+      {
         title: "Values",
         path: "/admin/values",
       },
       {
-        title: "History",
-        path: "/admin/history",
+        title: "Services",
+        path: "/admin/services",
       },
       {
-        title: "People",
-        path: "/admin/people",
+        title: "Impact",
+        path: "/admin/impact",
+      },
+      {
+        title: "News & Insight",
+        path: "/admin/newsInsight",
       },
     ],
   },

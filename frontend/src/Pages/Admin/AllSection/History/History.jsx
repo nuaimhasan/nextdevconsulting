@@ -34,14 +34,14 @@ export default function History() {
       if (id) {
         const res = await updatePrivacy({ id, data: info });
         if (res?.data?.success) {
-          Swal.fire("Success", "History updated successfully", "success");
+          Swal.fire("Success", "Services updated successfully", "success");
         } else {
           Swal.fire("Error", "Something went wrong", "error");
         }
       } else {
         const res = await addPrivacy(info);
         if (res?.data?.success) {
-          Swal.fire("Success", "History created successfully", "success");
+          Swal.fire("Success", "Services created successfully", "success");
         } else {
           Swal.fire("Error", "Something went wrong", "error");
         }
@@ -55,7 +55,7 @@ export default function History() {
   return (
     <div className="make_privacy_policy">
       <h2 className="mb-3 text-center text-xl font-medium text-primary sm:text-2xl">
-        {id ? "Edit History" : "Create History"}
+        {id ? "Edit Services" : "Create Services"}
       </h2>
 
       {isLoading ? (

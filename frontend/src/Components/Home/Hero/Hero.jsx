@@ -12,17 +12,20 @@ export default function Hero() {
   return (
     <section>
       <div className="grid-cols-2 md:grid">
-        <div className="order-2 flex items-center justify-center md:justify-end bg-secondary pr-5 md:order-1">
+        <div className="order-2 flex items-center justify-center bg-secondary pr-5 md:order-1 md:justify-end">
           <div className="w-[75%] animate-slideInLeft py-6 text-white md:py-0">
-            <h3 className="text-xs font-normal md:text-sm">{banner?.title}</h3>
-            <h1 className="mt-2 text-lg font-bold md:text-3xl">
+            {/* <h3 className="text-xs font-normal md:text-sm">{banner?.title}</h3> */}
+            <h1 className="mt-2 text-lg font-bold md:text-2xl">
               {banner?.subtitle}
             </h1>
             <h2 className="mb-7 mt-3 text-sm md:mt-5 md:text-base">
               {banner?.description}
             </h2>
             <Link className="orange_btn" to="/news-insights">
-              Read More
+              Explore Our Services
+            </Link>
+            <Link className="orange_btn2 ml-2" to="/contact-us">
+              Contact Us
             </Link>
           </div>
         </div>

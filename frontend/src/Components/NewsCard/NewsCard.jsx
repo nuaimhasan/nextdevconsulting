@@ -29,17 +29,17 @@ export default function NewsCard() {
   const projects = data.data;
 
   return (
-
     <div className="grid gap-y-4 sm:grid-cols-2 md:grid-cols-3">
       {projects.map((project) => (
         <Link
+          data-aos="zoom-in-up"
           to={`/project/${project._id}`}
           key={project._id}
-          className="max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+          className="max-w-sm overflow-hidden rounded-lg border border-gray-200 bg-white shadow"
         >
           <Link to={`/project/${project._id}`}>
             <img
-              className="h-48 w-full rounded-t-lg md:h-56"
+              className="h-48 w-full rounded-t-lg md:h-56 hover:scale-105 transition-transform duration-300"
               src={`${import.meta.env.VITE_BACKEND_URL}/${project.image}`}
               alt={project.title}
             />

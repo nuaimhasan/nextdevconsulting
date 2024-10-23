@@ -11,6 +11,7 @@ export default function ProjectCard({ data }) {
     <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-4">
       {projectData?.map((project) => (
         <div
+          data-aos="zoom-in-up"
           key={project?._id}
           className="max-w-sm overflow-hidden rounded-lg border border-gray-200 bg-white shadow"
         >

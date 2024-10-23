@@ -27,7 +27,7 @@ export default function Subscribe() {
           </h2>
           <div>
             <p className="text-sm md:text-xl">
-              Monthly updates from Itad featuring our latest news, opinion and
+              Monthly updates from Nextdev featuring our latest news, opinion and
               career opportunities
             </p>
             <form

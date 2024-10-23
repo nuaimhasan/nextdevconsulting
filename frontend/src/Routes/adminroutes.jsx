@@ -38,6 +38,13 @@ import Values from "../Pages/Admin/AllSection/Values/Values";
 import History from "../Pages/Admin/AllSection/History/History";
 import CareerSection from "../Pages/Admin/AllSection/CareerSection/CareerSection";
 import People from "../Pages/Admin/AllSection/People/People";
+import NewsInsight from "../Pages/Admin/AllSection/NewsInsight/NewsInsight";
+import OurPurpose from "../Pages/Admin/OurPurpose/OurPurpose";
+import ServiceList from "../Pages/Admin/Services/ServiceList";
+import AddService from "../Pages/Admin/Services/AddService";
+import EditService from "../Pages/Admin/Services/EditService";
+import LeadershipSection from "../Pages/Admin/Director/LeadershipSection";
+import WhatWeDo from "../Pages/Admin/AllSection/WhatWeDo/WhatWeDo";
 
 export const adminRoutes = {
   path: "/admin",
@@ -51,10 +58,7 @@ export const adminRoutes = {
       path: "dashboard",
       element: <Dashboard />,
     },
-    {
-      path: "project/all",
-      element: <ProjectList />,
-    },
+
     {
       path: "category",
       element: <CategoryList />,
@@ -72,12 +76,29 @@ export const adminRoutes = {
       element: <AddCategory />,
     },
     {
+      path: "project/all",
+      element: <ProjectList />,
+    },
+    {
       path: "project/add",
       element: <AddProject />,
     },
     {
       path: "project/edit/:id",
       element: <EditProject />,
+    },
+
+    {
+      path: "services/all",
+      element: <ServiceList />,
+    },
+    {
+      path: "services/add",
+      element: <AddService />,
+    },
+    {
+      path: "services/edit/:id",
+      element: <EditService />,
     },
     {
       path: "featuresProject/all",
@@ -90,6 +111,10 @@ export const adminRoutes = {
     {
       path: "featuresProject/edit/:id",
       element: <EditFeaturesProject />,
+    },
+    {
+      path: "leadershipSection",
+      element: <LeadershipSection />,
     },
     {
       path: "director/all",
@@ -184,20 +209,32 @@ export const adminRoutes = {
       element: <WhoWeAre />,
     },
     {
+      path: "/admin/what-we-do",
+      element: <WhatWeDo />,
+    },
+    {
       path: "/admin/values",
       element: <Values />,
     },
     {
-      path: "/admin/history",
+      path: "/admin/services",
       element: <History />,
     },
     {
-      path: "/admin/people",
+      path: "/admin/impact",
       element: <People />,
     },
     {
       path: "/admin/careerSection",
       element: <CareerSection />,
+    },
+    {
+      path: "/admin/newsInsight",
+      element: <NewsInsight />,
+    },
+    {
+      path: "/admin/ourPurpose",
+      element: <OurPurpose />,
     },
   ],
 };

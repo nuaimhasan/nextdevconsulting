@@ -6,11 +6,21 @@ import { commonRoute } from "./Routes/commonRoute";
 import useAuthCheck from "./Hook/useAuthCheck";
 import { useGetFaviconsQuery } from "./Redux/favicon/faviconApi";
 import { useGetSEOQuery } from "./Redux/seo/seoApi";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const router = createBrowserRouter([mainRoutes, adminRoutes, commonRoute]);
 
 function App() {
   useAuthCheck();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: false,
+    });
+  }, []);
 
   const { data: favicon } = useGetFaviconsQuery();
   const icon = favicon?.data?.icon;

@@ -7,6 +7,9 @@ import { useEffect } from "react";
 import News from "../../../Components/Home/News/News";
 import AboutUs from "../../../Components/Home/AboutUs/AboutUs";
 import Subscribe from "../../../Components/Home/Subscribe/Subscribe";
+import Mission from "../../../Components/Home/Mission/Mission";
+import Services from "../../../Components/Home/Services/Services";
+import Roster from "../../../Components/Home/Roster/Roster";
 
 export default function Home() {
   useEffect(() => {
@@ -16,12 +19,15 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Mission />
+      <Services />
       <News />
-      <AboutUs/>
+      <AboutUs />
       {/* <Features /> */}
       {/* <WhyChoose /> */}
       <ProjectHighlight />
-      <Subscribe/>
+      <Roster />
+      <Subscribe />
       {/* <Gallery /> */}
     </>
   );

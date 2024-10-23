@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { useGetFeatureProjectsQuery } from "../../../Redux/featureProject/featureProjectApi";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function ProjectHighlight() {
   const { data } = useGetFeatureProjectsQuery();
@@ -17,8 +18,16 @@ export default function ProjectHighlight() {
   return (
     <section className="bg-white py-10">
       <div className="container relative">
-        <div className="mb-10 border-b pb-3 text-secondary">
-          <h2 className="text-2xl font-medium md:text-5xl">Recent Projects</h2>
+      <div className="text-center">
+            <h2 className="text-2xl font-semibold text-secondary md:text-3xl md:font-bold">
+            Stay Updated with the Latest Insights
+            </h2>
+            <p className="mx-auto mt-2 text-xs md:w-[60%] md:text-[15px]">
+            From thought leadership articles to news on global trends, our <strong>News & Insights</strong> section keeps you informed on topics that shape the future of business, sustainability, and development.
+            </p>
+          </div>
+        <div className="my-10 border-b pb-3 text-secondary">
+          <h2 className="text-2xl font-medium md:text-5xl">Featured Posts</h2>
         </div>
         <Swiper
           modules={[Navigation, A11y, Autoplay]}
@@ -38,9 +47,12 @@ export default function ProjectHighlight() {
                   <h2 className="text-xl font-medium uppercase text-neutral md:text-4xl">
                     {project?.title}
                   </h2>
-                  <p className="mt-2 text-[8px] text-neutral-content md:text-base">
+                  <p className="my-2 text-[8px] text-neutral-content md:text-base">
                     {parse(project?.description)}
                   </p>
+                  <Link to="news-insights" className="orange_btn">
+                    Read More Insights
+                  </Link>
                 </div>
                 <div className="max-h-80 min-h-60 md:max-h-[450px] md:min-h-96">
                   <img

@@ -40,5 +40,7 @@ export const apiSlice = createApi({
     "subscriber",
     "whoweare",
     "peopleSection",
+    "ourPurpose",
+    "services",
   ],
 });
