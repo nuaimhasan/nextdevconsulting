@@ -1,33 +1,52 @@
+import { lazy, Suspense } from "react";
 import MainLayout from "../Layout/MainLayout";
-import Career from "../Pages/Main/Career/Career";
-// import Aboutus from "../Pages/Main/Aboutus/Aboutus";
-import Contactus from "../Pages/Main/Contactus/Contactus";
+
+// Lazy-loaded components
 import Home from "../Pages/Main/Home/Home";
-import NewsInsights from "../Pages/Main/NewsInsights/NewsInsights";
-import Clients from "../Pages/Main/WhatWeDo/Clients/Clients";
-import Impact from "../Pages/Main/WhatWeDo/Impact/Impact";
-import Projects from "../Pages/Main/WhatWeDo/Projects/Projects";
-import Regions from "../Pages/Main/WhatWeDo/Regions/Regions";
-import Evalution from "../Pages/Main/WhatWeDo/Services/Evalution/Evalution";
-import Services from "../Pages/Main/WhatWeDo/Services/Services";
-import Strategy from "../Pages/Main/WhatWeDo/Services/Strategy/Strategy";
-import Topics from "../Pages/Main/WhatWeDo/Topics/Topics";
-import WhatWeDo from "../Pages/Main/WhatWeDo/WhatWeDo";
-import History from "../Pages/Main/WhoWeAre/History/History";
-import Leadership from "../Pages/Main/WhoWeAre/Leadership/Leadership";
-import Offices from "../Pages/Main/WhoWeAre/Ofiices/Offices";
-import People from "../Pages/Main/WhoWeAre/People/People";
-import Policies from "../Pages/Main/WhoWeAre/Policies/Policies";
-import Values from "../Pages/Main/WhoWeAre/Values/Values";
-import WhoWeAre from "../Pages/Main/WhoWeAre/WhoWeAre";
-import PrivacyPolicy from "../Pages/Main/PrivacyPolicy/PrivacyPolicy";
-import ProjectDetails from "../Pages/Main/ProjectDetails/ProjectDetails";
-// import Projects from "../Pages/Main/Projects/Projects";
+import Spinner from "../Components/Spinner/Spinner";
+const Career = lazy(() => import("../Pages/Main/Career/Career"));
+const Contactus = lazy(() => import("../Pages/Main/Contactus/Contactus"));
+const NewsInsights = lazy(
+  () => import("../Pages/Main/NewsInsights/NewsInsights"),
+);
+const Clients = lazy(() => import("../Pages/Main/WhatWeDo/Clients/Clients"));
+const Impact = lazy(() => import("../Pages/Main/WhatWeDo/Impact/Impact"));
+const Projects = lazy(() => import("../Pages/Main/WhatWeDo/Projects/Projects"));
+const Regions = lazy(() => import("../Pages/Main/WhatWeDo/Regions/Regions"));
+const Evalution = lazy(
+  () => import("../Pages/Main/WhatWeDo/Services/Evalution/Evalution"),
+);
+const Services = lazy(() => import("../Pages/Main/WhatWeDo/Services/Services"));
+const Strategy = lazy(
+  () => import("../Pages/Main/WhatWeDo/Services/Strategy/Strategy"),
+);
+const Topics = lazy(() => import("../Pages/Main/WhatWeDo/Topics/Topics"));
+const WhatWeDo = lazy(() => import("../Pages/Main/WhatWeDo/WhatWeDo"));
+const History = lazy(() => import("../Pages/Main/WhoWeAre/History/History"));
+const Leadership = lazy(
+  () => import("../Pages/Main/WhoWeAre/Leadership/Leadership"),
+);
+const Offices = lazy(() => import("../Pages/Main/WhoWeAre/Ofiices/Offices"));
+const People = lazy(() => import("../Pages/Main/WhoWeAre/People/People"));
+const Policies = lazy(() => import("../Pages/Main/WhoWeAre/Policies/Policies"));
+const Values = lazy(() => import("../Pages/Main/WhoWeAre/Values/Values"));
+const WhoWeAre = lazy(() => import("../Pages/Main/WhoWeAre/WhoWeAre"));
+const PrivacyPolicy = lazy(
+  () => import("../Pages/Main/PrivacyPolicy/PrivacyPolicy"),
+);
+const ProjectDetails = lazy(
+  () => import("../Pages/Main/ProjectDetails/ProjectDetails"),
+);
 
 export const mainRoutes = {
   id: "main",
   path: "/",
-  element: <MainLayout />,
+  element: (
+    <Suspense fallback={<Spinner />}>
+      {" "}
+      <MainLayout />{" "}
+    </Suspense>
+  ),
   children: [
     {
       path: "/",
@@ -108,11 +127,11 @@ export const mainRoutes = {
 
     {
       path: "/work-with-us",
-      element: <Career/> ,
+      element: <Career />,
     },
     {
       path: "/work-with-us/careers",
-      element: <Career/> ,
+      element: <Career />,
     },
     // {
     //   path: "/projects",
