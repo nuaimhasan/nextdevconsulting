@@ -6,8 +6,6 @@ export default function Services() {
 
   const services = data?.data;
 
-  console.log(services);
-
   return (
     <section className="bg-white py-10">
       <div className="container">

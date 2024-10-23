@@ -11,7 +11,6 @@ export default function Footer() {
 
   const { data: logoData } = useGetLogosQuery();
   const logo = logoData?.data;
-  console.log(contact);
 
   return (
     <footer className="bg-white">
