@@ -11,6 +11,7 @@ export default function Footer() {
 
   const { data: logoData } = useGetLogosQuery();
   const logo = logoData?.data;
+  console.log(contact);
 
   return (
     <footer className="bg-white">
@@ -28,22 +29,15 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-6 md:col-span-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">
-                Resources
+                Adress
               </h2>
               <ul className="font-medium text-gray-500">
-                <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline">
-                    Flowbite
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://tailwindcss.com/"
-                    className="hover:underline"
-                  >
-                    Tailwind CSS
-                  </a>
-                </li>
+                <li className="mb-4">Contact: {contact?.address}</li>
+                <li>Email: {contact?.email}</li>
+              </ul>
+              <ul className="font-medium text-gray-500">
+                <li className="mb-4">Contact: {contact?.address}</li>
+                <li>Phone: {contact?.phone}</li>
               </ul>
             </div>
             <div>
@@ -103,7 +97,7 @@ export default function Footer() {
             </a>
           </span>
           <div className="mt-4 flex gap-2 text-xl sm:mt-0 sm:justify-center">
-            <a href={`${contact?.facebookLink}`} target="_blank" >
+            <a href={`${contact?.facebookLink}`} target="_blank">
               <FaFacebookSquare />
             </a>
             <a href={contact?.youtubeLink} target="_blank">

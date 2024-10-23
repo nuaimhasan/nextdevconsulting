@@ -21,7 +21,7 @@ export default function Hero() {
             <h2 className="mb-7 mt-3 text-sm md:mt-5 md:text-base">
               {banner?.description}
             </h2>
-            <Link className="orange_btn" to="/news-insights">
+            <Link className="orange_btn" to="/what-we-do/services">
               Explore Our Services
             </Link>
             <Link className="orange_btn2 ml-2" to="/contact-us">
