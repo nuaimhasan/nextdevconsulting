@@ -9,9 +9,6 @@ export default function Roster() {
             <h2 className="text-2xl font-semibold text-secondary md:text-3xl md:font-bold">
               Join Our Consultant Roster
             </h2>
-            <h3 className="mt-5 text-xl font-semibold">
-              Become Part of Our Global Consultant Network
-            </h3>
             <p className="mt-2 text-xs mx-auto md:w-[80%] md:text-[15px]">
               Are you an experienced professional or freelancer looking to
               contribute to impactful projects across the globe? Join our

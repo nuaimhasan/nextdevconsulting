@@ -3,7 +3,7 @@ const Director = require("../models/directorsModel");
 
 exports.add = async (req, res) => {
   const image = req?.file?.filename;
-  const { name, designation } = req.body;
+  const { name, designation, bio } = req.body;
 
   try {
     const newDirector = await Director.create({
@@ -60,7 +60,7 @@ exports.getSingle = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const director = await Director.findById(id); // Fix variable name
+    const director = await Director.findById(id); 
 
     if (!director) {
       return res.status(404).json({
@@ -84,7 +84,7 @@ exports.getSingle = async (req, res) => {
 
 exports.update = async (req, res) => {
   const { id } = req.params;
-  const { name, designation } = req.body;
+  const { name, designation, bio } = req.body;
   const image = req?.file?.filename;
 
   try {
@@ -103,7 +103,6 @@ exports.update = async (req, res) => {
     }
 
     if (image && existingDirector.image) {
-      // Delete the old image if a new image is uploaded
       fs.unlink(`./uploads/director/${existingDirector.image}`, (err) => {
         if (err) console.error("Failed to delete old image:", err);
       });
@@ -112,6 +111,7 @@ exports.update = async (req, res) => {
     const updatedData = {
       name: name || existingDirector.name,
       designation: designation || existingDirector.designation,
+      bio: bio || existingDirector.bio,
       image: image ? `director/${image}` : existingDirector.image,
     };
 
@@ -142,7 +142,7 @@ exports.destroy = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const director = await Director.findById(id); // Fix variable name
+    const director = await Director.findById(id);
 
     if (!director) {
       return res.status(404).json({
@@ -152,7 +152,6 @@ exports.destroy = async (req, res) => {
     }
 
     if (director.image) {
-      // Delete the image if it exists
       fs.unlink(`./uploads/director/${director.image}`, (err) => {
         if (err) console.error("Failed to delete image:", err);
       });

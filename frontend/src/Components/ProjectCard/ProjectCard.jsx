@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 
+const truncateDescription = (description, maxLength = 100) => {
+  const stripHtmlTags = (html) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  };
+
+  const plainText = stripHtmlTags(description);
+  const truncatedText =
+    plainText.length > maxLength
+      ? plainText.substring(0, maxLength) + "..."
+      : plainText;
+
+  return truncatedText;
+};
+
 export default function ProjectCard({ data }) {
   const projectData = data;
 
@@ -11,13 +27,13 @@ export default function ProjectCard({ data }) {
     <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-4">
       {projectData?.map((project) => (
         <div
-          data-aos="zoom-in-up"
+          // data-aos="zoom-in-up"
           key={project?._id}
-          className="max-w-sm overflow-hidden rounded-lg border border-gray-200 bg-white shadow"
+          className="max-w-sm overflow-hidden border-[1px] border-[#C2D4BB] bg-white hover:bg-[#C2D4BB] duration-500"
         >
           <Link to={`/project/${project?._id}`}>
             <img
-              className="h-52 w-full transform rounded-t-lg transition-transform duration-300 hover:scale-105"
+              className="h-44 w-full transform transition-transform duration-300 hover:scale-105"
               src={`${import.meta.env.VITE_BACKEND_URL}/${project?.image}`}
               alt=""
             />
@@ -29,7 +45,9 @@ export default function ProjectCard({ data }) {
                 {project?.title}
               </h5>
             </Link>
-            <div className="mb-3 font-normal text-gray-700">{description}</div>
+            <div className="mb-3 font-normal text-gray-700">
+              {parse(truncateDescription(project?.description, 100))}
+            </div>
           </div>
         </div>
       ))}

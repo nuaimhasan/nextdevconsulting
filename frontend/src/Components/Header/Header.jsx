@@ -94,9 +94,9 @@ export default function Header() {
                   to="/who-we-are"
                   className="duration-200 hover:text-secondary"
                 >
-                  Who we are 
+                  Who we are
                 </Link>
-                {dropdownOpen.whoWeAre &&  (
+                {dropdownOpen.whoWeAre && (
                   <ul className="absolute -left-5 w-48 rounded border bg-white shadow-lg">
                     <li>
                       <Link
@@ -166,7 +166,7 @@ export default function Header() {
                   <ul className="absolute left-0 w-48 rounded border bg-white shadow-lg">
                     <li>
                       <Link
-                        to="/what-we-do/services"
+                        to="/services"
                         className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Services
@@ -238,7 +238,6 @@ export default function Header() {
                   Work with us
                 </Link>
               </li>
-
               <li>
                 <Link
                   to="/contact-us"
@@ -303,12 +302,18 @@ export default function Header() {
               </div>
               <div className="flex items-center gap-2">
                 <li className="hidden sm:block">
-                  <Link to="/" className="text-xl hover:text-primary">
+                  <Link
+                    to={contactUs?.twitterLink}
+                    className="text-xl hover:text-primary"
+                  >
                     <FaXTwitter />
                   </Link>
                 </li>
                 <li className="hidden sm:block">
-                  <Link to="/" className="text-xl hover:text-primary">
+                  <Link
+                    to={contactUs?.linkedinLink}
+                    className="text-xl hover:text-primary"
+                  >
                     <CiLinkedin />
                   </Link>
                 </li>

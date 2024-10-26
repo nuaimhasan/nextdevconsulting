@@ -28,14 +28,14 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-6 md:col-span-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">
-                Adress
+                Contact
               </h2>
               <ul className="font-medium text-gray-500">
                 <li className="mb-4">Contact: {contact?.address}</li>
-                <li>Email: {contact?.email}</li>
+                
               </ul>
               <ul className="font-medium text-gray-500">
-                <li className="mb-4">Contact: {contact?.address}</li>
+                <li className="mb-4">Email: {contact?.email}</li>
                 <li>Phone: {contact?.phone}</li>
               </ul>
             </div>

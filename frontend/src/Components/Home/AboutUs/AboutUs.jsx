@@ -2,6 +2,7 @@ import CountUp from "react-countup";
 import { useGetAboutUsQuery } from "../../../Redux/about/aboutApi";
 import Spinner from "../../Spinner/Spinner";
 import parse from "html-react-parser";
+import { Link } from "react-router-dom";
 
 export default function AboutUs() {
   const { data, isLoading } = useGetAboutUsQuery();
@@ -21,7 +22,8 @@ export default function AboutUs() {
             <h2 className="text-2xl font-bold md:mb-4 md:text-4xl">
               {aboutUs?.title}
             </h2>
-            <div className="text-xs md:text-lg">{description}</div>
+            <div className="text-xs md:text-lg mb-5">{description}</div>
+            <Link className="orange_btn" to="/aboutus">Read More</Link>
           </div>
           <div className="flex space-x-12">
             <div className="text-center md:min-w-36">

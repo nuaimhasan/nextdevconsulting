@@ -14,7 +14,6 @@ export default function News() {
             Discover how <strong>NextDev Consulting</strong> is making a tangible difference through innovative solutions. From sustainable agriculture initiatives to transforming urban mobility, our projects reflect our commitment to creating positive, lasting change.
             </p>
           </div>
-          <h2 className="text-3xl font-bold text-center mt-4 text-secondary">Case Studies</h2>
           <div className="mt-5">
             <NewsCard />
           </div>

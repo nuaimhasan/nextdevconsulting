@@ -39,7 +39,7 @@ export default function NewsCard() {
         >
           <Link to={`/project/${project._id}`}>
             <img
-              className="h-48 w-full rounded-t-lg md:h-56 hover:scale-105 transition-transform duration-300"
+              className="h-48 w-full rounded-t-lg transition-transform duration-300 hover:scale-105 md:h-56"
               src={`${import.meta.env.VITE_BACKEND_URL}/${project.image}`}
               alt={project.title}
             />

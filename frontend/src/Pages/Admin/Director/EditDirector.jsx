@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import ImageUploading from "react-images-uploading";
@@ -7,18 +7,21 @@ import {
   useGetDirectorByIdQuery,
   useUpdateDirectorMutation,
 } from "../../../Redux/director/directorApi.js";
+import JoditEditor from "jodit-react";
 
 export default function EditDirector() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const editor = useRef(null);
 
   const { data: directorData, isLoading } = useGetDirectorByIdQuery(id);
   const director = directorData?.data;
 
   const [image, setImage] = useState([]);
+  const [bio, setBio] = useState(director && director?.bio);
 
   const [updateDirector, { isLoading: isUpdating }] =
-  useUpdateDirectorMutation();
+    useUpdateDirectorMutation();
 
   useEffect(() => {
     if (director) {
@@ -38,6 +41,7 @@ export default function EditDirector() {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("designation", designation);
+    formData.append("bio", bio);
 
     if (image?.length > 0 && image[0].file) {
       formData.append("image", image[0].file);
@@ -85,6 +89,17 @@ export default function EditDirector() {
                   name="designation"
                   defaultValue={director?.designation}
                   required
+                />
+              </div>
+            </div>
+
+            <div className="w-full rounded border md:col-span-2">
+              <p className="border-b p-3">Bio</p>
+              <div className="about_details p-4">
+                <JoditEditor
+                  ref={editor}
+                  value={bio}
+                  onBlur={(text) => setBio(text)}
                 />
               </div>
             </div>

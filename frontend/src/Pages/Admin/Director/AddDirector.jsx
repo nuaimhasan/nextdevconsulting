@@ -1,17 +1,19 @@
-import {  useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import ImageUploading from "react-images-uploading";
 import Swal from "sweetalert2";
+import JoditEditor from "jodit-react";
 import { useCreateDirectorMutation } from "../../../Redux/director/directorApi.js";
 
 export default function AddDirector() {
   const navigate = useNavigate();
+  const editor = useRef(null);
 
   const [image, setImage] = useState([]);
+  const [bio, setBio] = useState("");
 
-  const [createDirector, { isLoading }] =
-  useCreateDirectorMutation();
+  const [createDirector, { isLoading }] = useCreateDirectorMutation();
 
   const handleAddDirector = async (e) => {
     e.preventDefault();
@@ -22,10 +24,14 @@ export default function AddDirector() {
     if (image?.length <= 0) {
       return Swal.fire("", "Image is required", "warning");
     }
+    if (bio === "") {
+      return Swal.fire("", "Director Bio is required", "warning");
+    }
 
     const formData = new FormData();
     formData.append("name", name);
     formData.append("designation", designation);
+    formData.append("bio", bio);
     formData.append("image", image[0].file);
 
     try {
@@ -47,19 +53,29 @@ export default function AddDirector() {
   return (
     <section className="rounded bg-base-100 shadow">
       <div className="flex items-center justify-between border-b p-4 font-medium text-neutral">
-        <h3>Add Feature Project</h3>
+        <h3>Add Director</h3>
       </div>
 
       <form className="p-4" onSubmit={handleAddDirector}>
-        <div className="grid items-start gap-4 text-neutral-content sm:grid-cols-2 md:grid-cols-3">
+        <div className="items-start gap-4 text-neutral-content ">
           <div className="flex flex-col gap-3">
-            <div>
+            <div className="w-96">
               <p className="mb-1">Name</p>
               <input type="text" name="name" required />
             </div>
-            <div>
+            <div className="w-96">
               <p className="mb-1">Designation</p>
               <input type="text" name="designation" required />
+            </div>
+            <div className="rounded border w-full md:col-span-2">
+              <p className="border-b p-3">Bio</p>
+              <div className="about_details p-4">
+                <JoditEditor
+                  ref={editor}
+                  value={bio}
+                  onBlur={(text) => setBio(text)}
+                />
+              </div>
             </div>
             <div>
               <p className="mb-1">Image</p>

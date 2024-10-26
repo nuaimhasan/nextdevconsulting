@@ -4,6 +4,8 @@ import MainLayout from "../Layout/MainLayout";
 // Lazy-loaded components
 import Home from "../Pages/Main/Home/Home";
 import Spinner from "../Components/Spinner/Spinner";
+import AboutUss from "../Pages/Main/WhoWeAre/AboutUss/AboutUss";
+import LeaderBio from "../Pages/Main/WhoWeAre/Leadership/LeaderBio";
 const Career = lazy(() => import("../Pages/Main/Career/Career"));
 const Contactus = lazy(() => import("../Pages/Main/Contactus/Contactus"));
 const NewsInsights = lazy(
@@ -53,6 +55,10 @@ export const mainRoutes = {
       element: <Home />,
     },
     {
+      path: "/aboutus",
+      element: <AboutUss />,
+    },
+    {
       path: "/who-we-are",
       element: <WhoWeAre />,
     },
@@ -71,6 +77,10 @@ export const mainRoutes = {
     {
       path: "/who-we-are/leadership",
       element: <Leadership />,
+    },
+    {
+      path: "/who-we-are/leadership/:id",
+      element: <LeaderBio />,
     },
     {
       path: "/who-we-are/offices",
@@ -101,7 +111,7 @@ export const mainRoutes = {
       element: <Evalution />,
     },
     {
-      path: "/what-we-do/services",
+      path: "/services",
       element: <Services />,
     },
     {

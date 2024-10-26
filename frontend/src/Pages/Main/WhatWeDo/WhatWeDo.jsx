@@ -21,7 +21,7 @@ export default function WhatWeDo() {
           <div className="mt-7 grid gap-8 md:grid-cols-2">
             <Link
               className="border-t border-black py-5"
-              to="/what-we-do/services"
+              to="/services"
             >
               <h2 className="flex items-center gap-1 text-2xl font-medium duration-300 hover:underline">
                 Services{" "}
