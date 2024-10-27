@@ -3,7 +3,7 @@ import { useAddSubscriberMutation } from "../../../Redux/subscribers/subscribers
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
-  const [addSubscriber, { isLoading, isSuccess, isError }] = useAddSubscriberMutation();
+  const [addSubscriber, { isLoading, isSuccess }] = useAddSubscriberMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,8 +13,8 @@ export default function Subscribe() {
       setEmail("");
       alert("Successfully subscribed!");
     } catch (err) {
-      console.error("Subscription failed: ", err);
-      alert("Failed to subscribe. Please try again.");
+      console.error("Subscription failed: ", err?.data?.message);
+      alert(err?.data?.message);
     }
   };
 
@@ -22,17 +22,17 @@ export default function Subscribe() {
     <section className="w-full bg-secondary">
       <div className="container">
         <div className="py-10 text-center text-white md:flex md:text-start">
-          <h2 className="text-3xl font-bold md:w-[30%] md:text-4xl">
+          <h2 className="text-2xl font-bold md:w-[30%] md:text-4xl">
             Subscribe to our newsletter
           </h2>
           <div>
-            <p className="text-sm md:text-xl">
-              Monthly updates from Nextdev featuring our latest news, opinion and
-              career opportunities
+            <p className="text-xs md:text-xl">
+              Monthly updates from Nextdev featuring our latest news, opinion
+              and career opportunities
             </p>
             <form
               onSubmit={handleSubmit} // Attach submit handler
-              className="mt-7 flex justify-center gap-2 md:justify-start"
+              className="md:mt-7 mt-3 flex justify-center gap-2 md:justify-start"
             >
               <input
                 className="w-48 rounded-3xl border px-3 py-2 shadow md:w-72"
@@ -51,8 +51,9 @@ export default function Subscribe() {
               </button>
             </form>
 
-            {isSuccess && <p className="mt-2 text-green-500">Subscribed successfully!</p>}
-            {isError && <p className="mt-2 text-red-500">Subscription failed. Please try again.</p>}
+            {isSuccess && (
+              <p className="mt-2 text-green-500">Subscribed successfully!</p>
+            )}
           </div>
         </div>
       </div>

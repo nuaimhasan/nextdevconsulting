@@ -36,7 +36,7 @@ export default function Mission() {
             {ourPurpose?.keywords.map((value, index) => (
               <div
                 key={index}
-                data-aos="zoom-in-up"
+                data-aos="zoom-in"
                 className="rounded bg-black/50 py-2 text-white duration-300 hover:bg-secondary"
               >
                 <h3>{value}</h3>

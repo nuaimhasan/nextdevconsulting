@@ -22,11 +22,8 @@ export default function Home() {
       <Services />
       <News />
       <AboutUs />
-      {/* <Features /> */}
-      {/* <WhyChoose /> */}
       <ProjectHighlight />
       <Roster />
-      {/* <Gallery /> */}
     </>
   );
 }

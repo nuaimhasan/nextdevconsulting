@@ -6,6 +6,17 @@ import Home from "../Pages/Main/Home/Home";
 import Spinner from "../Components/Spinner/Spinner";
 import AboutUss from "../Pages/Main/WhoWeAre/AboutUss/AboutUss";
 import LeaderBio from "../Pages/Main/WhoWeAre/Leadership/LeaderBio";
+import ImpactAssessment from "../Pages/Main/WhatWeDo/Services/Details/ImpactAssessment";
+import Sustainable from "../Pages/Main/WhatWeDo/Services/Details/Sustainable";
+import Transport from "../Pages/Main/WhatWeDo/Services/Details/Transport";
+import Climate from "../Pages/Main/WhatWeDo/Services/Details/Climate";
+import PolicyFormulation from "../Pages/Main/WhatWeDo/Services/Details/PolicyFormulation";
+import Qualitative from "../Pages/Main/WhatWeDo/Services/Details/Qualitative";
+import FullCycle from "../Pages/Main/WhatWeDo/Services/Details/FullCycle";
+import Capacity from "../Pages/Main/WhatWeDo/Services/Details/Capacity";
+import Technical from "../Pages/Main/WhatWeDo/Services/Details/Technical";
+import Transformation from "../Pages/Main/WhatWeDo/Services/Details/Transformation";
+import ReadMore from "../Pages/Main/WhatWeDo/Services/Details/ReadMore";
 const Career = lazy(() => import("../Pages/Main/Career/Career"));
 const Contactus = lazy(() => import("../Pages/Main/Contactus/Contactus"));
 const NewsInsights = lazy(
@@ -99,10 +110,6 @@ export const mainRoutes = {
       element: <WhatWeDo />,
     },
     {
-      path: "/what-we-do/services",
-      element: <Services />,
-    },
-    {
       path: "/what-we-do/strategy",
       element: <Strategy />,
     },
@@ -113,6 +120,50 @@ export const mainRoutes = {
     {
       path: "/services",
       element: <Services />,
+    },
+    {
+      path: "/services/impact-assessment-and-evaluation",
+      element: <ImpactAssessment />,
+    },
+    {
+      path: "/services/sustainable-agriculture-and-food-systems",
+      element: <Sustainable />,
+    },
+    {
+      path: "/services/transport-infrastructure-and-mobility",
+      element: <Transport />,
+    },
+    {
+      path: "/services/climate-energy-and-environment",
+      element: <Climate />,
+    },
+    {
+      path: "/services/policy-formulation-and-strategy-development",
+      element: <PolicyFormulation />,
+    },
+    {
+      path: "/services/qualitative-and-quantitative-research",
+      element: <Qualitative />,
+    },
+    {
+      path: "/services/full-cycle-grant-management",
+      element: <FullCycle />,
+    },
+    {
+      path: "/services/capacity-building-and-training",
+      element: <Capacity />,
+    },
+    {
+      path: "/services/technical-assistance",
+      element: <Technical />,
+    },
+    {
+      path: "/services/digital-transformation-and-innovation",
+      element: <Transformation />,
+    },
+    {
+      path: "/services/digital-transformation-and-innovation/our-digital-transformation",
+      element: <ReadMore />,
     },
     {
       path: "/what-we-do/impact",

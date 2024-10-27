@@ -1,4 +1,5 @@
 const Subscribers = require("../models/subscribersModel");
+const { emailSend } = require("../utils/emailSend");
 
 // Add a new subscriber
 exports.addSubscriber = async (req, res) => {
@@ -12,9 +13,17 @@ exports.addSubscriber = async (req, res) => {
       });
     }
 
-    const newSubscriber = new Subscribers({
-      email,
-    });
+    // Check if the email already exists in the database
+    const existingSubscriber = await Subscribers.findOne({ email });
+    if (existingSubscriber) {
+      return res.status(400).json({
+        success: false,
+        message: "You are already subscribed. Thank you!",
+      });
+    }
+
+    const newSubscriber = new Subscribers({ email });
+    emailSend(email);
 
     const result = await newSubscriber.save();
 
@@ -50,7 +59,7 @@ exports.getSubscribers = async (req, res) => {
 // Delete subscriber by ID
 exports.deleteSubscriberById = async (req, res) => {
   const { id } = req.params;
-  
+
   try {
     const subscriber = await Subscribers.findByIdAndDelete(id);
 

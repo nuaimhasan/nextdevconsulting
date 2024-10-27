@@ -32,7 +32,7 @@ export default function Services() {
                   <img
                     src={`${import.meta.env.VITE_BACKEND_URL}/${service?.image}`}
                     alt="Service Icon"
-                    className="h-14 w-14 rounded-full object-cover"
+                    className="md:h-14 md:w-14 h-7 w-7 rounded-full object-cover"
                   />
                 </div>
                 <div>{service?.title}</div>

@@ -63,10 +63,9 @@ h2 {
 /* ------------------------- */
 
 .feature_card {
-  @apply text-xs md:text-base;
+  @apply text-[10px] md:text-base py-[8px] px-[5px] md:p-[15px] ;
   background: var(--primary);
   color: #fff;
-  padding: 15px;
   border-radius: 10px;
 
   display: flex;

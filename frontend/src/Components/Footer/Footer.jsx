@@ -19,13 +19,13 @@ export default function Footer() {
           <div className="mb-6 md:col-span-2 md:mb-0">
             <Link to="/admin/dashboard" className="flex items-center">
               <img
-                className="me-3 h-8"
+                className="me-3 w-28 max-h-20"
                 src={`${import.meta.env.VITE_BACKEND_URL}/${logo?.logo}`}
                 alt="Logo"
               />
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-6 md:col-span-3">
+          <div className="grid gap-8 sm:grid-cols-2 sm:gap-6 md:col-span-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">
                 Contact
@@ -39,7 +39,7 @@ export default function Footer() {
                 <li>Phone: {contact?.phone}</li>
               </ul>
             </div>
-            <div>
+            <div className="hidden md:block" >
               <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">
                 Quick access
               </h2>

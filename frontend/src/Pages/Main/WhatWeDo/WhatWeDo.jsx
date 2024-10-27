@@ -91,7 +91,6 @@ export default function WhatWeDo() {
                 alt=""
               />
             </Link>
-            
           </div>
         </div>
       </div>

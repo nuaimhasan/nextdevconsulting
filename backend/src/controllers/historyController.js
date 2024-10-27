@@ -12,6 +12,7 @@ exports.add = async (req, res) => {
 
     const result = await Model.create(req.body);
 
+
     res.status(201).json({
       success: true,
       message: "Created successfully",

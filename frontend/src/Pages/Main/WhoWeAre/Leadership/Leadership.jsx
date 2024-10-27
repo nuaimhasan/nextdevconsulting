@@ -26,13 +26,8 @@ export default function Leadership() {
         <h3 className="text-2xl font-bold text-secondary">
           Our Leadership Team
         </h3>
-        <p className="mt-3 md:w-[70%]">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet nihil
-          rerum quaerat quasi ipsam fugiat enim earum, esse, sit veniam illum,
-          nemo quis ipsum numquam adipisci ratione! Non, ea culpa!
-        </p>
 
-        <div className="mt-8 grid gap-7 border-t pt-12 sm:grid-cols-3 md:grid-cols-4">
+        <div className="mt-5 grid gap-7 border-t pt-12 sm:grid-cols-3 md:grid-cols-4">
           {director?.map((leader) => (
             <Link
               to={`/who-we-are/leadership/${leader?._id}`}

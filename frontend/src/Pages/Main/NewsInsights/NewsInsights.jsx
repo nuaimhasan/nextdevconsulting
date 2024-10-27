@@ -6,6 +6,7 @@ import Spinner from "../../../Components/Spinner/Spinner";
 import parse from "html-react-parser";
 import { useGetNewsInsightQuery } from "../../../Redux/newsInsight/newsInsightApi";
 
+
 export default function NewsInsights() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,6 +41,8 @@ export default function NewsInsights() {
   const projects = data?.data;
   const category = categoryData?.data;
   const totalPages = data?.totalPages || 1;
+
+  console.log(description)
 
   return (
     <section className="container py-12">

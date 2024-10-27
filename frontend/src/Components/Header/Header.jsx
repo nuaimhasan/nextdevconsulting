@@ -287,16 +287,16 @@ export default function Header() {
                   )}
                 </div>
               </div>
-              <div className="">
+              <div className="flex items-center">
                 {search ? (
                   <MdCancel
                     onClick={() => setSearch(false)}
-                    className="flex cursor-pointer items-center text-xl"
+                    className="cursor-pointer text-xl"
                   />
                 ) : (
                   <FaSearch
                     onClick={() => setSearch(true)}
-                    className="flex cursor-pointer items-center text-xl"
+                    className="cursor-pointer text-xl"
                   />
                 )}
               </div>

@@ -8,20 +8,21 @@ export default function News() {
         <div>
           <div className="text-center">
             <h2 className="text-2xl font-semibold text-secondary md:text-3xl md:font-bold">
-            Real Stories, Real Impact
+              Real Stories, Real Impact
             </h2>
             <p className="mx-auto mt-2 text-xs md:w-[60%] md:text-[15px]">
-            Discover how <strong>NextDev Consulting</strong> is making a tangible difference through innovative solutions. From sustainable agriculture initiatives to transforming urban mobility, our projects reflect our commitment to creating positive, lasting change.
+              Discover how <strong>NextDev Consulting</strong> is making a
+              tangible difference through innovative solutions. From sustainable
+              agriculture initiatives to transforming urban mobility, our
+              projects reflect our commitment to creating positive, lasting
+              change.
             </p>
           </div>
           <div className="mt-5">
             <NewsCard />
           </div>
           <div className="mt-4 flex justify-center">
-            <Link
-              className="orange_btn"
-              to="/news-insights"
-            >
+            <Link className="orange_btn" to="/news-insights">
               Read More Success Stories
             </Link>
           </div>

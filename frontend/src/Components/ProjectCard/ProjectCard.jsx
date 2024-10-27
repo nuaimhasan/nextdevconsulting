@@ -20,14 +20,11 @@ const truncateDescription = (description, maxLength = 100) => {
 export default function ProjectCard({ data }) {
   const projectData = data;
 
-  const description =
-    projectData?.description && parse(projectData?.description);
-
   return (
     <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-4">
       {projectData?.map((project) => (
         <div
-          // data-aos="zoom-in-up"
+          data-aos="zoom-in-up"
           key={project?._id}
           className="max-w-sm overflow-hidden border-[1px] border-[#C2D4BB] bg-white hover:bg-[#C2D4BB] duration-500"
         >
