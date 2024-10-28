@@ -15,7 +15,7 @@ export default function AboutUss() {
   return (
     <section className="py-12">
       <div className="container">
-        <div>
+        <div className="flex justify-center">
           <div className="md:w-[65%] md:text-start">
             <h2 className="text-3xl font-bold">About Us</h2>
             <div className="mb-5 mt-2 text-lg tracking-wider">

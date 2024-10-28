@@ -17,6 +17,10 @@ const careerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
 });
 
 const Career = mongoose.model("Career", careerSchema);

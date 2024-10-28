@@ -17,6 +17,7 @@ import Capacity from "../Pages/Main/WhatWeDo/Services/Details/Capacity";
 import Technical from "../Pages/Main/WhatWeDo/Services/Details/Technical";
 import Transformation from "../Pages/Main/WhatWeDo/Services/Details/Transformation";
 import ReadMore from "../Pages/Main/WhatWeDo/Services/Details/ReadMore";
+import CareerDetails from "../Pages/Main/Career/CareerDetails";
 const Career = lazy(() => import("../Pages/Main/Career/Career"));
 const Contactus = lazy(() => import("../Pages/Main/Contactus/Contactus"));
 const NewsInsights = lazy(
@@ -189,6 +190,10 @@ export const mainRoutes = {
     {
       path: "/work-with-us",
       element: <Career />,
+    },
+    {
+      path: "/work-with-us/career/:id",
+      element: <CareerDetails/>,
     },
     {
       path: "/work-with-us/careers",

@@ -2,7 +2,7 @@ const Career = require("../models/careerModel");
 
 // Create a new career
 exports.addCareer = async (req, res) => {
-  const { title, role, location, type } = req.body;
+  const { title, role, location, type, description } = req.body;
 
   try {
     const newCareer = new Career({
@@ -10,6 +10,7 @@ exports.addCareer = async (req, res) => {
       role,
       location,
       type,
+      description,
     });
 
     const result = await newCareer.save();
@@ -72,7 +73,7 @@ exports.getCareerById = async (req, res) => {
 // Update career by ID
 exports.updateCareerById = async (req, res) => {
   const { id } = req.params;
-  const { title, role, location, type } = req.body;
+  const { title, role, location, type, description } = req.body;
 
   try {
     const career = await Career.findById(id);
@@ -88,6 +89,7 @@ exports.updateCareerById = async (req, res) => {
     career.role = role || career.role;
     career.location = location || career.location;
     career.type = type || career.type;
+    career.description = description || career.description;
 
     const updatedCareer = await career.save();
 

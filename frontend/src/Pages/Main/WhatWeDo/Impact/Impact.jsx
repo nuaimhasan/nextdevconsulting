@@ -25,14 +25,14 @@ export default function Impact() {
 
   return (
     <section className="container py-12">
-      <div className="mt-6 text-center md:w-[70%] md:text-start">
+      <div className="mt-6 text-center mx-auto md:w-[70%] md:text-start">
         <h2 className="text-3xl font-bold">Stories of impact</h2>
         <p className="mt-5 tracking-wider">
           {description}
         </p>
       </div>
       <div className="mt-8">
-        <h3 className="mb-4 text-2xl font-semibold text-secondary">
+        <h3 className="mb-4 text-2xl text-center font-semibold text-secondary">
           Our Impact Story
         </h3>
         <ProjectCard data={project} />
