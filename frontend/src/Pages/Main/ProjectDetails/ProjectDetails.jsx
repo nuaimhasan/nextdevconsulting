@@ -16,7 +16,6 @@ export default function ProjectDetails() {
 
   const { data: projectData, isLoading } = useGetProjectByIdQuery(id);
   const project = projectData?.data;
-  const { title, description, category, image } = project;
 
   const { data } = useGetRecentProjectsQuery();
   const recentProjects = data?.data;
@@ -48,19 +47,19 @@ export default function ProjectDetails() {
           <div className="md:col-span-2">
             <div>
               <img
-                src={`${import.meta.env.VITE_BACKEND_URL}/${image}`}
+                src={`${import.meta.env.VITE_BACKEND_URL}/${project?.image}`}
                 alt="project"
                 className="h-56 w-full rounded-md sm:h-[360px]"
               />
             </div>
 
             <div className="mt-2">
-              <h2 className="text-xl">{category?.name}</h2>
+              <h2 className="text-xl">{project?.category?.name}</h2>
               <h2 className="text-2xl font-bold text-secondary md:text-4xl">
-                {title}
+                {project?.title}
               </h2>
               <div className="mt-3 text-xs text-neutral-content md:text-sm">
-                {parse(description)}
+                {project?.description && parse(project?.description)}
               </div>
             </div>
           </div>
