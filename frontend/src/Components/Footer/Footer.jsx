@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="container w-full p-4 py-6 lg:py-8">
         <div className="md:grid md:grid-cols-5">
           <div className="mb-6 md:col-span-2 md:mb-0">
-            <Link to="/admin/dashboard" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img
                 className="me-3 w-28 max-h-20"
                 src={`${import.meta.env.VITE_BACKEND_URL}/${logo?.logo}`}
