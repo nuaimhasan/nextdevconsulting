@@ -16,6 +16,7 @@ export default function ProjectDetails() {
 
   const { data: projectData, error, isLoading } = useGetProjectByIdQuery(id);
 
+  const project = projectData?.data;
   const { data } = useGetRecentProjectsQuery();
 
   const recentProjects = data?.data;
@@ -45,7 +46,6 @@ export default function ProjectDetails() {
     return <div>Error loading project details.</div>;
   }
 
-  const project = projectData?.data;
   if (!project) {
     return <div>Project not found</div>;
   }
