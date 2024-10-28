@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="mb-6 md:col-span-2 md:mb-0">
             <Link to="/" className="flex items-center">
               <img
-                className="me-3 w-28 max-h-20"
+                className="me-3 -ml-5 max-w-48"
                 src={`${import.meta.env.VITE_BACKEND_URL}/${logo?.logo}`}
                 alt="Logo"
               />
