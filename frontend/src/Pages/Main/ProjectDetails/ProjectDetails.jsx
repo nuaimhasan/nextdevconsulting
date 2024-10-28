@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
 import {
   useGetProjectByIdQuery,
   useGetRecentProjectsQuery,
 } from "../../../Redux/projects/projectsApi";
 import parse from "html-react-parser";
+import Spinner from "../../../Components/Spinner/Spinner";
 
 export default function ProjectDetails() {
   useEffect(() => {
@@ -14,11 +14,11 @@ export default function ProjectDetails() {
 
   const { id } = useParams();
 
-  const { data: projectData, error, isLoading } = useGetProjectByIdQuery(id);
-
+  const { data: projectData, isLoading } = useGetProjectByIdQuery(id);
   const project = projectData?.data;
-  const { data } = useGetRecentProjectsQuery();
+  const { title, description, category, image } = project;
 
+  const { data } = useGetRecentProjectsQuery();
   const recentProjects = data?.data;
 
   const truncateDescription = (description, maxLength = 100) => {
@@ -38,19 +38,8 @@ export default function ProjectDetails() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
-
-  if (error) {
-    Swal.fire("", "Failed to load project details", "error");
-    return <div>Error loading project details.</div>;
-  }
-
-  if (!project) {
-    return <div>Project not found</div>;
-  }
-
-  const { title, description, category, image } = project;
 
   return (
     <section className="py-10">
