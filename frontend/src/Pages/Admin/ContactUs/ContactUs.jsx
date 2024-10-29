@@ -168,7 +168,7 @@ export default function ContactUs() {
           </div>
 
           <div>
-            <p className="mb-1">Youtube Link</p>
+            <p className="mb-1">Instagram Link</p>
             <input
               type="text"
               name="youtubeLink"
