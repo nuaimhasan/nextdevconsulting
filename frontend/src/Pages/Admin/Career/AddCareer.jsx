@@ -59,7 +59,7 @@ export default function AddCareer() {
       </div>
 
       <div className="rounded border mt-5 md:col-span-2">
-        <p className="border-b p-3">Project Description</p>
+        <p className="border-b p-3">Job Description</p>
         <div className="about_details p-4">
           <JoditEditor
             ref={editor}
