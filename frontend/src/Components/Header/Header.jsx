@@ -3,10 +3,9 @@ import { RiMenu3Fill } from "react-icons/ri";
 import SidebarMenu from "./SidebarMenu";
 import { useEffect, useState } from "react";
 import { FaXTwitter } from "react-icons/fa6";
-import { CiLinkedin } from "react-icons/ci";
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 import { useSearchProjectsQuery } from "../../Redux/projects/projectsApi";
-import { FaSearch } from "react-icons/fa";
+import { FaLinkedin, FaSearch } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
 
@@ -313,7 +312,7 @@ export default function Header() {
                     to={contactUs?.linkedinLink}
                     className="text-xl hover:text-primary"
                   >
-                    <CiLinkedin />
+                    <FaLinkedin />
                   </Link>
                 </li>
               </div>

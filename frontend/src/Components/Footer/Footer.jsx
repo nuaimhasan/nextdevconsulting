@@ -1,7 +1,6 @@
-import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
+import { FaFacebookSquare, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useGetContactsQuery } from "../../Redux/contact/contactApi";
-import { CiLinkedin } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { useGetLogosQuery } from "../../Redux/logo/logoApi";
 
@@ -106,7 +105,7 @@ export default function Footer() {
               <FaXTwitter />
             </a>
             <a href={contact?.linkedinLink} target="_blank">
-              <CiLinkedin />
+            <FaLinkedin />
             </a>
           </div>
         </div>
