@@ -107,6 +107,10 @@ export const mainRoutes = {
       element: <NewsInsights />,
     },
     {
+      path: "/projects",
+      element: <NewsInsights />,
+    },
+    {
       path: "/what-we-do",
       element: <WhatWeDo />,
     },

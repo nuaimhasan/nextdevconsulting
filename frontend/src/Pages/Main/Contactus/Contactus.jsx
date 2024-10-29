@@ -25,21 +25,27 @@ export default function Contactus() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const newMessage = { name, phone, email, message };
-
-    try {
-      const res = await addContactMsg(newMessage).unwrap();
-      if (res?.success) {
-        Swal.fire("", "Contact message added successfully", "success");
-        setName("");
-        setPhone("");
-        setEmail("");
-        setMessage("");
+  
+    if (window.grecaptcha) {
+      try {
+        const token = await window.grecaptcha.enterprise.execute("6LcIZW8qAAAAACiPNg1dv35aWaKEw1PyaD3yuEaD", { action: "submit" });
+        
+        const newMessage = { name, phone, email, message, captchaToken: token };
+  
+        const res = await addContactMsg(newMessage).unwrap();
+        if (res?.success) {
+          Swal.fire("", "Contact message added successfully", "success");
+          setName("");
+          setPhone("");
+          setEmail("");
+          setMessage("");
+        }
+      } catch (error) {
+        Swal.fire("", "CAPTCHA validation failed or form submission failed", "error");
+        console.log(error);
       }
-    } catch (error) {
-      Swal.fire("", "Failed to add message", "error");
-      console.log(error);
+    } else {
+      Swal.fire("", "reCAPTCHA not loaded", "error");
     }
   };
 
@@ -94,7 +100,7 @@ export default function Contactus() {
             <h2 className="mb-3 text-center text-xl font-semibold text-primary md:text-start">
               Get In Touch
             </h2>
-            <form className="flex flex-col gap-3">
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <div>
                 <input
                   type="text"
@@ -137,7 +143,7 @@ export default function Contactus() {
               </div>
 
               <div>
-                <button onClick={handleSubmit} className="orange_btn">
+                <button type="submit" className="orange_btn">
                   {isLoading ? "Sending..." : "Send Message"}
                 </button>
               </div>
@@ -152,7 +158,7 @@ export default function Contactus() {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.5137715991677!2d90.40189681478167!3d23.800322888304148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c71acd4938d1%3A0x3dda4e95ebf99b10!2sGolf%20Heights!5e0!3m2!1sen!2sbd!4v1730087213013!5m2!1sen!2sbd"
             width="100%"
             height="420"
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>

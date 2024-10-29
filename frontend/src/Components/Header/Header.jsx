@@ -190,8 +190,7 @@ export default function Header() {
                     </li>
                     <li>
                       <Link
-                        to="/news-insights"
-                        // to="/what-we-do/projects"
+                        to="/projects"
                         className="line block px-4 py-2 duration-200 hover:text-secondary"
                       >
                         Projects

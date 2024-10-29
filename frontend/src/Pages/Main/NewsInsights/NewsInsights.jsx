@@ -4,13 +4,16 @@ import { useGetProjectsQuery } from "../../../Redux/projects/projectsApi";
 import { useGetCategoryQuery } from "../../../Redux/category/categoryApi";
 import Spinner from "../../../Components/Spinner/Spinner";
 import parse from "html-react-parser";
+import { useLocation } from 'react-router-dom';
 import { useGetNewsInsightQuery } from "../../../Redux/newsInsight/newsInsightApi";
 
 
 export default function NewsInsights() {
+  const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [location]);
+  
   const [selectedCategory, setSelectedCategory] = useState("");
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
@@ -19,6 +22,8 @@ export default function NewsInsights() {
   const { data, refetch, isFetching } = useGetProjectsQuery(query);
 
   const { data: newsInsightData } = useGetNewsInsightQuery();
+
+  const headingText = location.pathname === '/projects' ? 'Our Projects' : 'News & Insights';
 
   const newsInsight = newsInsightData?.data;
 
@@ -42,12 +47,10 @@ export default function NewsInsights() {
   const category = categoryData?.data;
   const totalPages = data?.totalPages || 1;
 
-  console.log(description)
-
   return (
     <section className="container py-12">
       <div className="mt-6 text-center md:w-[70%] md:text-start">
-        <h2 className="text-2xl font-bold md:text-3xl">News & insights</h2>
+        <h2 className="text-2xl font-bold md:text-3xl">{headingText}</h2>
         <div className="mt-5 text-sm tracking-wide md:text-base md:tracking-wider">
           {description}
         </div>
