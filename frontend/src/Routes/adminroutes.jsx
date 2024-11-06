@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import AdminLayout from "../Layout/AdminLayout";
 import Spinner from "../Components/Spinner/Spinner";
+import OfficesSection from "../Pages/Admin/AllSection/OfficeSection/OfficesSection";
 
 // Lazy-loaded components
 const About = lazy(() => import("../Pages/Admin/AboutUs/AboutUs"));
@@ -279,6 +280,10 @@ export const adminRoutes = {
     {
       path: "/admin/careerSection",
       element: <CareerSection />,
+    },
+    {
+      path: "/admin/offices",
+      element: <OfficesSection />,
     },
     {
       path: "/admin/newsInsight",

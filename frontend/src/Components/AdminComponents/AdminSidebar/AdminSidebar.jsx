@@ -144,6 +144,10 @@ const adminSidebarItems = [
         path: "/admin/services",
       },
       {
+        title: "Office",
+        path: "/admin/offices",
+      },
+      {
         title: "Impact",
         path: "/admin/impact",
       },

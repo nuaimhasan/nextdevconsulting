@@ -38,6 +38,7 @@ const subscriber = require("./subscribersRoute");
 const newsInsight = require("./newsInsightRoute");
 const ourPupose = require("./ourPurposeRoute")
 const service = require("./serviceRoute");
+const officeSection = require("./officeSectionRoutes");
 
 //------------------------------------------------------------------------
 // use Routes
@@ -76,6 +77,7 @@ router.use("/subscriber", subscriber);
 router.use("/newsInsight", newsInsight);
 router.use("/ourPurpose", ourPupose);
 router.use("/service", service);
+router.use("/officeSection", officeSection);
 
 
 module.exports = router;
