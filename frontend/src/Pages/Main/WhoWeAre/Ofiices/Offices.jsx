@@ -1,5 +1,4 @@
 import { useGetOfficeQuery } from "../../../../Redux/whoWeAre/office/officeApi";
-z;
 import parse from "html-react-parser";
 
 export default function Offices() {
